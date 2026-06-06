@@ -1,0 +1,253 @@
+/* ============================================================
+   base.css — Reset, Typography, Global Elements
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-b);
+  background: var(--cream);
+  color: var(--g800);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar        { width: 5px; }
+::-webkit-scrollbar-track  { background: var(--maroon-dk); }
+::-webkit-scrollbar-thumb  { background: var(--gold); border-radius: 3px; }
+
+/* ── Section Scroll Margin (accounts for fixed navbar) ── */
+section {
+  scroll-margin-top: var(--navbar-height);
+}
+
+/* ── Container ── */
+.sec {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--section-pad) var(--container-pad);
+}
+
+/* ── Section Tag (label above headings) ── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-m);
+  font-size: 0.67rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--maroon-lt);
+  margin-bottom: 0.65rem;
+}
+.tag::before {
+  content: '';
+  width: 18px;
+  height: 1px;
+  background: var(--maroon-lt);
+}
+.tag.light         { color: var(--gold); }
+.tag.light::before { background: var(--gold); }
+
+/* ── Headings ── */
+.h2 {
+  font-family: var(--font-h);
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--maroon-dk);
+  margin-bottom: 0.85rem;
+}
+.h2.light { color: #fff; }
+
+.h3 {
+  font-family: var(--font-h);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--maroon-dk);
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1rem;
+  color: var(--g600);
+  line-height: 1.8;
+  max-width: 560px;
+}
+.lead.light { color: rgba(255, 255, 255, 0.6); }
+
+/* ── Buttons ── */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: var(--gold);
+  color: var(--maroon-dk);
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: var(--transition);
+}
+.btn-gold:hover {
+  background: var(--gold-lt);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(212, 168, 67, 0.3);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  font-size: 0.88rem;
+  padding: 0.8rem 1.4rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: var(--transition);
+}
+.btn-ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold-lt);
+}
+
+/* ── Filter / Category Buttons ── */
+.filter-btn {
+  background: var(--white);
+  border: 1px solid var(--g200);
+  color: var(--g600);
+  font-family: var(--font-b);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.45rem 1rem;
+  border-radius: 100px;
+  transition: var(--transition);
+}
+.filter-btn:hover,
+.filter-btn.on {
+  background: var(--maroon-dk);
+  border-color: var(--maroon-dk);
+  color: #fff;
+}
+
+/* ── Chip Tags ── */
+.chip {
+  font-family: var(--font-m);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  background: rgba(155, 38, 38, 0.07);
+  color: var(--maroon-lt);
+  border: 1px solid rgba(155, 38, 38, 0.15);
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+}
+
+/* ── ID Badge (accreditation etc) ── */
+.id-badge {
+  background: rgba(212, 168, 67, 0.15);
+  color: var(--gold);
+  padding: 0.15rem 0.6rem;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.82rem;
+}
+
+/* ── Visi Misi Cards ── */
+.vm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.vm-card {
+  background: var(--maroon-dk);
+  border-radius: var(--radius-md);
+  padding: 1.4rem;
+}
+.vm-title {
+  font-family: var(--font-m);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.vm-title::before {
+  content: '';
+  width: 14px;
+  height: 1px;
+  background: var(--gold);
+}
+.vm-text {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.7;
+}
+.vm-list { list-style: none; margin-top: 0.5rem; }
+.vm-list li {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.6;
+  padding: 0.2rem 0 0.2rem 1rem;
+  position: relative;
+}
+.vm-list li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+}
+
+/* ── Identity Table ── */
+.id-table { width: 100%; border-collapse: collapse; }
+.id-table tr            { border-bottom: 1px solid var(--g200); }
+.id-table tr:last-child { border-bottom: none; }
+.id-table td {
+  padding: 0.65rem 0;
+  font-size: 0.88rem;
+  vertical-align: top;
+}
+.id-table td:first-child {
+  color: var(--g400);
+  font-family: var(--font-m);
+  font-size: 0.75rem;
+  width: 42%;
+  padding-right: 1rem;
+}
+.id-table td:last-child {
+  color: var(--maroon-dk);
+  font-weight: 600;
+}
+
+/* ── Panel text ── */
+.p-text {
+  font-size: 0.92rem;
+  color: var(--g600);
+  line-height: 1.9;
+  margin-bottom: 1rem;
+}

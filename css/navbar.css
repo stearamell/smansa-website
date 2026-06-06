@@ -1,0 +1,173 @@
+/* ============================================================
+   navbar.css — Fixed Navigation Bar
+   ============================================================ */
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  height: var(--navbar-height);
+  background: rgba(91, 19, 19, 0.97);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(212, 168, 67, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--container-pad);
+  transition: background 0.3s ease;
+}
+
+/* ── Brand Logo ── */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-decoration: none;
+}
+
+.nav-emblem {
+  width: 40px;
+  height: 40px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-h);
+  font-weight: 900;
+  font-size: 1rem;
+  color: var(--maroon-dk);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px rgba(212, 168, 67, 0.4);
+}
+
+.nav-brand-txt {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-brand-name {
+  font-family: var(--font-h);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.nav-brand-url {
+  font-family: var(--font-m);
+  font-size: 0.62rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+}
+
+/* ── Menu Links ── */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  list-style: none;
+}
+
+.nav-menu a {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  padding: 0.4rem 0.7rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+  letter-spacing: 0.01em;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+  color: var(--gold-lt);
+  background: rgba(212, 168, 67, 0.1);
+}
+
+/* ── CTA Button ── */
+.nav-menu .cta a {
+  background: var(--gold);
+  color: var(--maroon-dk);
+  font-weight: 700;
+  padding: 0.4rem 1rem;
+}
+.nav-menu .cta a:hover {
+  background: var(--gold-lt);
+  color: var(--maroon-dk);
+}
+
+/* ── Hamburger (Mobile) ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+}
+.hamburger span {
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* ── Quick Access Bar ── */
+.quick-bar {
+  background: var(--white);
+  border-bottom: 1px solid var(--g200);
+  padding: 0 var(--container-pad);
+  overflow-x: auto;
+}
+
+.quick-bar-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: flex;
+  gap: 0;
+}
+
+.quick-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--g600);
+  text-decoration: none;
+  padding: 1rem 1.4rem;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: var(--transition);
+}
+.quick-btn:hover {
+  color: var(--maroon);
+  border-bottom-color: var(--gold);
+}
+.quick-btn-icon {
+  font-size: 1.1rem;
+}
+
+/* ── Admin Button ── */
+.nav-admin-btn {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.35rem;
+  background: transparent !important;
+  border: 1.5px solid rgba(212, 168, 67, 0.5) !important;
+  color: var(--gold) !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  padding: 0.35rem 0.85rem !important;
+  border-radius: 100px !important;
+  transition: all 0.2s ease !important;
+  letter-spacing: 0.02em;
+}
+.nav-admin-btn:hover {
+  background: rgba(212, 168, 67, 0.12) !important;
+  border-color: var(--gold) !important;
+  color: var(--gold-lt) !important;
+  transform: translateY(-1px);
+}

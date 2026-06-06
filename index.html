@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="laravel-url" content="http://localhost:8000">
+  <title>SMA Negeri 1 Bandar Lampung — smansa-bdl.sch.id</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav id="nav">
+  <a href="#beranda" class="nav-brand">
+    <div class="nav-emblem">1</div>
+    <div class="nav-brand-txt">
+      <span class="nav-brand-name">SMA Negeri 1 Bandar Lampung</span>
+      <span class="nav-brand-url">smansa-bdl.sch.id</span>
+    </div>
+  </a>
+  <ul class="nav-menu" id="navMenu">
+    <li><a href="#profil">Profil</a></li>
+    <li><a href="#struktur">Organisasi</a></li>
+    <li><a href="#akademik">Akademik</a></li>
+    <li><a href="#kesiswaan">Kesiswaan</a></li>
+    <li><a href="#berita">Berita</a></li>
+    <li><a href="#galeri">Galeri</a></li>
+    <li><a href="#data-siswa">Data Siswa</a></li>
+    <li><a href="#unduhan">Unduhan</a></li>
+    <li class="cta"><a href="#kontak">Kontak</a></li>
+    <li class="nav-admin"><a href="#" id="nav-admin-link" target="_blank" class="nav-admin-btn">🔒 Admin</a></li>
+  </ul>
+  <div class="hamburger" onclick="UI.toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ═══ BERANDA ═══ -->
+<section id="beranda">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-stripe"></div>
+  <div class="slider-wrap">
+    <div class="hero-left">
+      <div class="slide active" id="slide-0">
+        <div class="slide-eyebrow">Akreditasi Unggul &nbsp;·&nbsp; Berdiri 1952 &nbsp;·&nbsp; Bandar Lampung</div>
+        <h1 class="slide-h1">Selamat Datang di <em>SMA Negeri 1 Bandar Lampung</em></h1>
+        <p class="slide-desc">Sekolah menengah atas negeri kebanggaan Kota Bandar Lampung yang telah mencetak generasi unggul, berkarakter, dan berdaya saing selama lebih dari tujuh dekade.</p>
+        <div class="hero-btns">
+          <a href="#profil" class="btn-gold">Lihat Profil Sekolah →</a>
+          <a href="#kontak" class="btn-ghost">Hubungi Kami</a>
+        </div>
+      </div>
+      <div class="slide" id="slide-1">
+        <div class="slide-eyebrow">Prestasi Terbaru 2024</div>
+        <h1 class="slide-h1">Raih Prestasi <em>Gemilang di Tingkat Nasional</em></h1>
+        <p class="slide-desc">Siswa-siswi SMAN 1 Bandar Lampung kembali mengharumkan nama sekolah dan kota dengan berbagai capaian membanggakan di kompetisi akademik dan non-akademik.</p>
+        <div class="hero-btns">
+          <a href="#kesiswaan" class="btn-gold">Lihat Prestasi →</a>
+          <a href="#berita" class="btn-ghost">Baca Berita</a>
+        </div>
+      </div>
+      <div class="slide" id="slide-2">
+        <div class="slide-eyebrow">PPDB 2025/2026</div>
+        <h1 class="slide-h1">Penerimaan Peserta Didik Baru <em>Tahun Ajaran 2025/2026</em></h1>
+        <p class="slide-desc">Daftarkan dirimu sekarang! Bergabunglah dengan ribuan siswa berprestasi di SMAN 1 Bandar Lampung. Pendaftaran online dibuka mulai Maret 2025.</p>
+        <div class="hero-btns">
+          <a href="#unduhan" class="btn-gold">Unduh Formulir PPDB →</a>
+          <a href="#kontak" class="btn-ghost">Informasi Lebih Lanjut</a>
+        </div>
+      </div>
+      <div class="slider-dots" id="dots">
+        <div class="dot active" onclick="Slider.goTo(0)"></div>
+        <div class="dot" onclick="Slider.goTo(1)"></div>
+        <div class="dot" onclick="Slider.goTo(2)"></div>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-n">1.450+</div><div class="stat-l">Siswa Aktif</div></div>
+        <div><div class="stat-n">96</div><div class="stat-l">Guru & Tendik</div></div>
+        <div><div class="stat-n">28</div><div class="stat-l">Ekstrakurikuler</div></div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hcard-label">PPDB 2025/2026</div>
+      <div class="hcard-title">Jadwal Penerimaan Siswa Baru</div>
+      <div class="hcard-sub">SMA Negeri 1 Bandar Lampung</div>
+      <div class="hcard-row"><div class="hcard-ico">📅</div><div class="hcard-txt"><strong>Pendaftaran Online</strong> — Maret s/d Mei 2025</div></div>
+      <div class="hcard-row"><div class="hcard-ico">📋</div><div class="hcard-txt"><strong>Seleksi & Verifikasi Berkas</strong> — Juni 2025</div></div>
+      <div class="hcard-row"><div class="hcard-ico">📣</div><div class="hcard-txt"><strong>Pengumuman Hasil Seleksi</strong> — Juli 2025</div></div>
+      <div class="hcard-row"><div class="hcard-ico">🏫</div><div class="hcard-txt">Daya tampung: <strong>400 siswa</strong> / 10 rombel</div></div>
+      <div class="hcard-row"><div class="hcard-ico">🌐</div><div class="hcard-txt">Pendaftaran via <strong>smansa-bdl.sch.id</strong></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Quick Access Bar -->
+<div class="quick-bar">
+  <div class="quick-bar-inner">
+    <a href="#profil"   class="quick-btn"><span class="quick-btn-icon">🏫</span> Profil Sekolah</a>
+    <a href="#berita"   class="quick-btn"><span class="quick-btn-icon">📰</span> Berita Terkini</a>
+    <a href="#berita"   class="quick-btn"><span class="quick-btn-icon">📣</span> Pengumuman</a>
+    <a href="#akademik" class="quick-btn"><span class="quick-btn-icon">📅</span> Kalender Akademik</a>
+    <a href="#unduhan"     class="quick-btn"><span class="quick-btn-icon">📥</span> Unduhan</a>
+    <a href="#data-siswa" class="quick-btn"><span class="quick-btn-icon">🎓</span> Data Siswa</a>
+    <a href="#kontak"     class="quick-btn"><span class="quick-btn-icon">📞</span> Kontak</a>
+  </div>
+</div>
+
+<!-- ═══ PROFIL ═══ -->
+<section id="profil">
+  <div class="sec">
+    <div class="profil-grid">
+      <div class="profil-left reveal">
+        <div style="position:relative;">
+          <div class="profil-frame">
+            <div class="profil-frame-deco"></div>
+            <div class="profil-ava">👨‍🏫</div>
+            <div class="profil-overlay">
+              <div class="profil-name">Drs. H. Lukman Hakim, M.M.</div>
+              <div class="profil-role">Kepala SMA Negeri 1 Bandar Lampung</div>
+            </div>
+          </div>
+          <div class="profil-deco-border"></div>
+        </div>
+        <div class="profil-accred">
+          <div class="accred-badge">A</div>
+          <div><div class="accred-label">Akreditasi BAN-S/M</div><div class="accred-value">Unggul — 2023</div></div>
+        </div>
+      </div>
+      <div class="reveal rd2">
+        <div class="tag">Tentang Kami</div>
+        <h2 class="h2">Profil SMA Negeri 1<br>Bandar Lampung</h2>
+        <div class="tabs">
+          <button class="tab on"  onclick="UI.switchTab(this,'sejarah')">Sejarah</button>
+          <button class="tab"     onclick="UI.switchTab(this,'visimisi')">Visi & Misi</button>
+          <button class="tab"     onclick="UI.switchTab(this,'tujuan')">Tujuan & Motto</button>
+          <button class="tab"     onclick="UI.switchTab(this,'identitas')">Identitas</button>
+          <button class="tab"     onclick="UI.switchTab(this,'kepsek')">Kepala Sekolah</button>
+        </div>
+        <div id="p-sejarah" class="panel on">
+          <p class="p-text">SMA Negeri 1 Bandar Lampung merupakan salah satu sekolah menengah atas negeri tertua dan paling bergengsi di Provinsi Lampung. Didirikan pada tahun 1952, sekolah ini awalnya bernama SMA Negeri Teluk Betung, yang kemudian berganti nama seiring perkembangan administrasi wilayah.</p>
+          <p class="p-text">Selama lebih dari tujuh dekade, SMAN 1 Bandar Lampung telah melahirkan ribuan alumni yang kini berkiprah di berbagai bidang — mulai dari pejabat pemerintahan, akademisi, pengusaha sukses, hingga tokoh nasional yang dikenal luas.</p>
+          <p class="p-text">Dengan semangat terus berinovasi, SMAN 1 Bandar Lampung kini tampil sebagai sekolah modern yang memadukan tradisi akademik yang kuat dengan pendekatan pembelajaran abad ke-21, merespons kebutuhan era digital dan tantangan global.</p>
+        </div>
+        <div id="p-visimisi" class="panel">
+          <div class="vm-grid">
+            <div class="vm-card">
+              <div class="vm-title">Visi Sekolah</div>
+              <div class="vm-text">"Terwujudnya peserta didik yang beriman, bertaqwa, berakhlak mulia, unggul dalam prestasi, dan berwawasan global."</div>
+            </div>
+            <div class="vm-card">
+              <div class="vm-title">Misi Sekolah</div>
+              <ul class="vm-list">
+                <li>Menyelenggarakan pendidikan bermutu berbasis Profil Pelajar Pancasila</li>
+                <li>Mengembangkan potensi akademik dan non-akademik peserta didik secara optimal</li>
+                <li>Menciptakan lingkungan belajar yang kondusif, inovatif, dan menyenangkan</li>
+                <li>Menjalin kemitraan dengan orang tua, masyarakat, dan dunia usaha</li>
+                <li>Memanfaatkan teknologi informasi dalam seluruh proses pendidikan</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="p-tujuan" class="panel">
+          <p class="p-text">Tujuan pendidikan SMAN 1 Bandar Lampung adalah menghasilkan lulusan yang memiliki kompetensi akademik tinggi, karakter yang baik, kecakapan abad ke-21, dan mampu bersaing di tingkat nasional maupun internasional.</p>
+          <div class="vm-card" style="margin-top:1rem;">
+            <div class="vm-title">Motto Sekolah</div>
+            <div class="vm-text" style="font-size:1.1rem;font-family:var(--font-h);font-style:italic;color:#fff;">"Cerdas, Berkarakter, Berprestasi"</div>
+          </div>
+        </div>
+        <div id="p-identitas" class="panel">
+          <table class="id-table">
+            <tr><td>Nama Sekolah</td><td>SMA Negeri 1 Bandar Lampung</td></tr>
+            <tr><td>NPSN</td><td>10807002</td></tr>
+            <tr><td>NSS</td><td>301126001002</td></tr>
+            <tr><td>Alamat</td><td>Jl. Jend. Sudirman No. 41, Enggal, Bandar Lampung 35118</td></tr>
+            <tr><td>Status Sekolah</td><td>Negeri</td></tr>
+            <tr><td>Akreditasi</td><td><span class="id-badge">A — Unggul</span></td></tr>
+            <tr><td>Tahun Berdiri</td><td>1952</td></tr>
+            <tr><td>Domain</td><td>smansa-bdl.sch.id</td></tr>
+            <tr><td>Kurikulum</td><td>Merdeka Belajar</td></tr>
+          </table>
+        </div>
+        <div id="p-kepsek" class="panel">
+          <div class="vm-card" style="margin-bottom:1rem;">
+            <div class="vm-title">Sambutan Kepala Sekolah</div>
+            <div class="vm-text">"Assalamu'alaikum Wr. Wb. Selamat datang di website resmi SMA Negeri 1 Bandar Lampung. Dengan penuh rasa syukur, kami terus berkomitmen untuk memberikan pelayanan pendidikan terbaik bagi seluruh peserta didik kami. Mari bersama-sama kita wujudkan generasi yang cerdas, berkarakter, dan siap menghadapi tantangan global."</div>
+          </div>
+          <p class="p-text">— <strong>Drs. H. Lukman Hakim, M.M.</strong><br><span style="font-size:0.8rem;color:var(--g400)">Kepala SMA Negeri 1 Bandar Lampung</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STRUKTUR ═══ -->
+<section id="struktur">
+  <div class="sec">
+    <div class="reveal" style="text-align:center;margin-bottom:0;">
+      <div class="tag light" style="justify-content:center;">Struktur Organisasi</div>
+      <h2 class="h2 light">Bagan Organisasi Sekolah</h2>
+    </div>
+    <div class="org-tree reveal rd1">
+      <div class="org-level">
+        <div class="org-node head"><div class="org-node-role">Kepala Sekolah</div><div class="org-node-name">Drs. H. Lukman Hakim, M.M.</div></div>
+      </div>
+      <div class="org-connector"></div>
+      <div class="org-level">
+        <div class="org-node"><div class="org-node-role">Wakasek Kurikulum</div><div class="org-node-name placeholder">— Isi nama —</div></div>
+        <div class="org-node"><div class="org-node-role">Wakasek Kesiswaan</div><div class="org-node-name placeholder">— Isi nama —</div></div>
+        <div class="org-node"><div class="org-node-role">Wakasek Sarana</div><div class="org-node-name placeholder">— Isi nama —</div></div>
+        <div class="org-node"><div class="org-node-role">Wakasek Humas</div><div class="org-node-name placeholder">— Isi nama —</div></div>
+      </div>
+      <div class="org-connector"></div>
+      <div class="org-level">
+        <div class="org-node"><div class="org-node-role">Kepala TU</div><div class="org-node-name placeholder">— Isi nama —</div></div>
+        <div class="org-node"><div class="org-node-role">Koordinator BK</div><div class="org-node-name placeholder">— Isi nama —</div></div>
+        <div class="org-node"><div class="org-node-role">Kepala Perpustakaan</div><div class="org-node-name placeholder">— Isi nama —</div></div>
+        <div class="org-node"><div class="org-node-role">Kepala Laboratorium</div><div class="org-node-name placeholder">— Isi nama —</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GURU — Paginated 4×4 ═══ -->
+<section id="guru">
+  <div class="sec">
+    <div class="reveal" style="margin-bottom:2rem;">
+      <div class="tag">Sumber Daya Manusia</div>
+      <h2 class="h2">Guru & Tenaga Kependidikan</h2>
+      <p class="lead">Didukung oleh tenaga pendidik berpengalaman dan berkualifikasi tinggi, sebagian besar berpendidikan S2. Menampilkan <strong>16 guru per halaman</strong> (4×4).</p>
+    </div>
+    <div class="guru-filter reveal rd1">
+      <button class="filter-btn on"  onclick="UI.filterGuru(this,'semua')">Semua</button>
+      <button class="filter-btn"     onclick="UI.filterGuru(this,'mipa')">MIPA</button>
+      <button class="filter-btn"     onclick="UI.filterGuru(this,'ips')">IPS</button>
+      <button class="filter-btn"     onclick="UI.filterGuru(this,'bahasa')">Bahasa</button>
+      <button class="filter-btn"     onclick="UI.filterGuru(this,'tendik')">Tenaga Kependidikan</button>
+    </div>
+    <!-- Grid di-render oleh JS dari data.js -->
+    <div id="guru-grid" class="guru-grid reveal rd2"></div>
+    <div id="guru-pagination" class="pagination"></div>
+  </div>
+</section>
+
+<!-- ═══ AKADEMIK ═══ -->
+<section id="akademik">
+  <div class="sec">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.5rem;" class="reveal">
+      <div>
+        <div class="tag">Program Pembelajaran</div>
+        <h2 class="h2">Akademik & Kurikulum</h2>
+      </div>
+      <p class="lead" style="max-width:400px;">Implementasi Kurikulum Merdeka Belajar dengan pendekatan berbasis projek dan Profil Pelajar Pancasila.</p>
+    </div>
+    <div class="ak-grid">
+      <div class="ak-card reveal"><div class="ak-icon">📐</div><div class="ak-title">MIPA & Saintek</div><div class="ak-desc">Program sains unggulan dengan laboratorium modern. Pembinaan olimpiade sains nasional secara intensif.</div><div class="ak-chips"><span class="chip">Matematika</span><span class="chip">Fisika</span><span class="chip">Kimia</span><span class="chip">Biologi</span><span class="chip">Informatika</span></div></div>
+      <div class="ak-card reveal rd1"><div class="ak-icon">📊</div><div class="ak-title">IPS & Soshum</div><div class="ak-desc">Kajian ilmu sosial, ekonomi, geografi, dan sejarah yang mengintegrasikan studi kasus nyata.</div><div class="ak-chips"><span class="chip">Ekonomi</span><span class="chip">Sosiologi</span><span class="chip">Geografi</span><span class="chip">Sejarah</span></div></div>
+      <div class="ak-card reveal rd2"><div class="ak-icon">🌐</div><div class="ak-title">Program Bahasa</div><div class="ak-desc">Penguasaan Bahasa Inggris, Indonesia, dan Mandarin dengan pendekatan komunikatif berbasis teknologi.</div><div class="ak-chips"><span class="chip">Bhs. Inggris</span><span class="chip">Bhs. Indonesia</span><span class="chip">Mandarin</span></div></div>
+      <div class="ak-card reveal rd3"><div class="ak-icon">🏆</div><div class="ak-title">Program Olimpiade</div><div class="ak-desc">Pembinaan intensif OSN, ONMIPA, KSM, dan olimpiade internasional dengan mentor berpengalaman.</div><div class="ak-chips"><span class="chip">OSN</span><span class="chip">ONMIPA</span><span class="chip">IMO</span><span class="chip">KSM</span></div></div>
+      <div class="ak-card reveal rd4"><div class="ak-icon">🔬</div><div class="ak-title">Karya Ilmiah (KIR)</div><div class="ak-desc">Pembimbingan riset dan karya ilmiah remaja untuk kompetisi LKIR, OPSI, tingkat nasional & internasional.</div><div class="ak-chips"><span class="chip">KIR</span><span class="chip">LKIR</span><span class="chip">OPSI</span></div></div>
+      <div class="ak-card reveal rd5"><div class="ak-icon">🤝</div><div class="ak-title">Projek P5</div><div class="ak-desc">Projek Penguatan Profil Pelajar Pancasila melalui kewirausahaan, lingkungan, dan kebangsaan.</div><div class="ak-chips"><span class="chip">Kewirausahaan</span><span class="chip">Lingkungan</span><span class="chip">Budaya Lokal</span></div></div>
+    </div>
+    <div style="margin-top:4rem;" class="reveal">
+      <div class="tag">Kalender Akademik</div>
+      <h3 class="h3">Kegiatan Belajar Mengajar 2024/2025</h3>
+    </div>
+    <div class="kal-wrap reveal rd1">
+      <div class="kal-header">
+        <button class="kal-nav-btn" onclick="Kalender.prev()">‹</button>
+        <div class="kal-month" id="kal-title"></div>
+        <button class="kal-nav-btn" onclick="Kalender.next()">›</button>
+      </div>
+      <div class="kal-grid" id="kal-days"></div>
+      <div class="kal-events-list" id="kal-events"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ KESISWAAN ═══ -->
+<section id="kesiswaan">
+  <div class="sec">
+    <div class="reveal" style="margin-bottom:2.5rem;">
+      <div class="tag">Kehidupan Siswa</div>
+      <h2 class="h2">Kesiswaan</h2>
+      <p class="lead">Pengembangan potensi siswa secara menyeluruh melalui organisasi, ekstrakurikuler, dan pembinaan prestasi.</p>
+    </div>
+    <div class="kesiswaan-tabs-nav reveal rd1">
+      <button class="ktab on" onclick="UI.switchKtab(this,'ekskul')">Ekstrakurikuler</button>
+      <button class="ktab"    onclick="UI.switchKtab(this,'osis')">OSIS & MPK</button>
+      <button class="ktab"    onclick="UI.switchKtab(this,'prestasi')">Siswa Berprestasi</button>
+      <button class="ktab"    onclick="UI.switchKtab(this,'alumni')">Alumni</button>
+    </div>
+
+    <!-- Tab Ekskul -->
+    <div id="k-ekskul" class="kpanel on">
+      <div class="ekskul-grid">
+        <div class="ekskul-card"><div class="ekskul-ico">⚽</div><div><div class="ekskul-name">Sepak Bola & Futsal</div><div class="ekskul-desc">Latihan rutin Senin & Rabu, bertanding di liga pelajar kota</div></div></div>
+        <div class="ekskul-card"><div class="ekskul-ico">🏀</div><div><div class="ekskul-name">Basket</div><div class="ekskul-desc">Tim putra dan putri aktif di DBL dan kompetisi antar SMA</div></div></div>
+        <div class="ekskul-card"><div class="ekskul-ico">🎭</div><div><div class="ekskul-name">Teater & Seni Pertunjukan</div><div class="ekskul-desc">Pementasan rutin dan festival seni tingkat regional</div></div></div>
+        <div class="ekskul-card"><div class="ekskul-ico">🎵</div><div><div class="ekskul-name">Band & Paduan Suara</div><div class="ekskul-desc">Penampilan di berbagai acara sekolah dan kota</div></div></div>
+        <div class="ekskul-card"><div class="ekskul-ico">📷</div><div><div class="ekskul-name">Fotografi & Jurnalistik</div><div class="ekskul-desc">Mendokumentasikan kegiatan dan menerbitkan majalah sekolah</div></div></div>
+        <div class="ekskul-card"><div class="ekskul-ico">🤖</div><div><div class="ekskul-name">Robotika & Coding</div><div class="ekskul-desc">Kompetisi robot dan lomba programming tingkat nasional</div></div></div>
+        <div class="ekskul-card"><div class="ekskul-ico">🥋</div><div><div class="ekskul-name">Pencak Silat</div><div class="ekskul-desc">Beladiri tradisional Nusantara, juara Porprov konsisten</div></div></div>
+        <div class="ekskul-card"><div class="ekskul-ico">🌿</div><div><div class="ekskul-name">Pramuka</div><div class="ekskul-desc">Gugus depan aktif, peserta Jambore Nasional</div></div></div>
+        <div class="ekskul-card"><div class="ekskul-ico">🎨</div><div><div class="ekskul-name">Seni Rupa & Desain</div><div class="ekskul-desc">Pameran karya dan lomba desain poster nasional</div></div></div>
+        <div class="ekskul-card"><div class="ekskul-ico">🏊</div><div><div class="ekskul-name">Renang</div><div class="ekskul-desc">Atlet renang pelajar tingkat provinsi dan nasional</div></div></div>
+        <div class="ekskul-card"><div class="ekskul-ico">🕌</div><div><div class="ekskul-name">Rohis & KSI</div><div class="ekskul-desc">Pembinaan karakter islami dan kegiatan sosial kemasyarakatan</div></div></div>
+        <div class="ekskul-card"><div class="ekskul-ico">🌍</div><div><div class="ekskul-name">English Club</div><div class="ekskul-desc">Debat bahasa Inggris, speech contest, dan program pertukaran</div></div></div>
+      </div>
+    </div>
+
+    <!-- Tab OSIS -->
+    <div id="k-osis" class="kpanel">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+        <div class="vm-card"><div class="vm-title">OSIS</div><div class="vm-text">OSIS SMAN 1 Bandar Lampung aktif menyelenggarakan berbagai program kegiatan siswa, mulai dari kegiatan akademik, sosial, hingga kreativitas. Dipimpin oleh ketua terpilih melalui proses pemilihan demokratis setiap tahun ajaran.</div></div>
+        <div class="vm-card"><div class="vm-title">MPK</div><div class="vm-text">MPK berfungsi sebagai lembaga legislatif siswa yang mengawasi dan memberikan masukan kepada OSIS. MPK mewakili aspirasi setiap kelas dalam pengambilan keputusan organisasi kesiswaan.</div></div>
+      </div>
+    </div>
+
+    <!-- Tab Prestasi — SCROLLABLE -->
+    <div id="k-prestasi" class="kpanel">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:0.5rem;">
+        <span style="font-family:var(--font-m);font-size:0.72rem;color:var(--g400);letter-spacing:0.06em;">MENAMPILKAN 12 PRESTASI · SCROLL UNTUK LIHAT SEMUA</span>
+        <span style="font-size:1.1rem;">🏆</span>
+      </div>
+      <div class="prestasi-scroll-wrap">
+        <!-- Diisi oleh JS -->
+        <div id="prestasi-list" class="prestasi-list"></div>
+      </div>
+      <div class="prestasi-scroll-hint">
+        <span>↕</span> Geser untuk melihat lebih banyak prestasi
+      </div>
+    </div>
+
+    <!-- Tab Alumni — PAGINATED -->
+    <div id="k-alumni" class="kpanel">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:0.5rem;">
+        <span style="font-family:var(--font-m);font-size:0.72rem;color:var(--g400);letter-spacing:0.06em;">MENAMPILKAN 3 ALUMNI PER HALAMAN · TOTAL 9 ALUMNI</span>
+      </div>
+      <!-- Diisi oleh JS -->
+      <div id="alumni-grid" class="alumni-grid"></div>
+      <div id="alumni-pagination" class="pagination"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BERITA ═══ -->
+<section id="berita">
+  <div class="sec">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:2rem;" class="reveal">
+      <div><div class="tag">Berita & Informasi</div><h2 class="h2">Terkini dari SMAN 1 BDL</h2></div>
+      <a href="#" style="font-size:0.82rem;font-weight:700;color:var(--maroon-lt);text-decoration:none;">Lihat Semua Berita →</a>
+    </div>
+    <div class="berita-nav reveal rd1">
+      <button class="bnav-btn on" onclick="UI.switchBerita(this,'berita-panel')">📰 Berita</button>
+      <button class="bnav-btn"    onclick="UI.switchBerita(this,'pengumuman-panel')">📣 Pengumuman</button>
+      <button class="bnav-btn"    onclick="UI.switchBerita(this,'agenda-panel')">📅 Agenda</button>
+    </div>
+    <div id="berita-panel" class="kpanel on">
+      <div class="berita-main reveal rd1">
+        <div class="news-big">
+          <div class="news-img-big">🎓<div class="news-cat-badge">PRESTASI</div></div>
+          <div class="news-body">
+            <div class="news-date">18 Februari 2025</div>
+            <div class="news-title">Tim Robotika SMAN 1 BDL Raih Emas di Kompetisi Nasional, Bangga Harumkan Lampung</div>
+            <div class="news-excerpt">Tim robotika beranggotakan tiga siswa kelas XI berhasil meraih medali emas dalam ajang Kompetisi Robotika Pelajar Nasional yang diselenggarakan di Yogyakarta.</div>
+            <a href="#" class="news-read">Baca Selengkapnya →</a>
+          </div>
+        </div>
+        <div class="news-side">
+          <div class="news-sm"><div class="news-img-sm">📚<div class="news-cat-badge">AKADEMIK</div></div><div class="news-body"><div class="news-date">12 Februari 2025</div><div class="news-title sm">Peluncuran Program Akselerasi Digital: Seluruh Siswa Belajar Coding dan AI</div><a href="#" class="news-read">Baca →</a></div></div>
+          <div class="news-sm"><div class="news-img-sm">🌿<div class="news-cat-badge">KEGIATAN</div></div><div class="news-body"><div class="news-date">5 Februari 2025</div><div class="news-title sm">Projek P5 Lingkungan: 1.200 Siswa Tanam Mangrove di Pantai Lampung</div><a href="#" class="news-read">Baca →</a></div></div>
+        </div>
+      </div>
+    </div>
+    <div id="pengumuman-panel" class="kpanel">
+      <div class="pengumuman-list">
+        <div class="peng-item"><div class="peng-date"><div class="peng-date-d">20</div><div class="peng-date-m">Feb</div></div><div><div class="peng-title">Pengumuman PPDB 2025/2026 — Jalur Prestasi Dibuka</div><div class="peng-sub">Pendaftaran jalur prestasi akademik dan non-akademik resmi dibuka mulai 20 Februari 2025</div></div></div>
+        <div class="peng-item"><div class="peng-date"><div class="peng-date-d">15</div><div class="peng-date-m">Feb</div></div><div><div class="peng-title">Jadwal Ujian Tengah Semester (UTS) Genap 2024/2025</div><div class="peng-sub">UTS Semester Genap dilaksanakan pada 17–22 Maret 2025.</div></div></div>
+        <div class="peng-item"><div class="peng-date"><div class="peng-date-d">10</div><div class="peng-date-m">Feb</div></div><div><div class="peng-title">Pemilihan Ketua OSIS Periode 2025/2026</div><div class="peng-sub">Pendaftaran calon ketua OSIS dibuka hingga 28 Februari 2025.</div></div></div>
+        <div class="peng-item"><div class="peng-date"><div class="peng-date-d">3</div><div class="peng-date-m">Feb</div></div><div><div class="peng-title">Jadwal Try Out UTBK-SNBT untuk Kelas XII</div><div class="peng-sub">Try out setiap Sabtu mulai 8 Februari – 29 Maret 2025. Wajib seluruh siswa kelas XII.</div></div></div>
+      </div>
+    </div>
+    <div id="agenda-panel" class="kpanel">
+      <div class="pengumuman-list">
+        <div class="peng-item"><div class="peng-date"><div class="peng-date-d">17</div><div class="peng-date-m">Mar</div></div><div><div class="peng-title">Ujian Tengah Semester Genap 2024/2025</div><div class="peng-sub">Seluruh siswa kelas X, XI, dan XII. Berlangsung hingga 22 Maret 2025.</div></div></div>
+        <div class="peng-item"><div class="peng-date"><div class="peng-date-d">25</div><div class="peng-date-m">Mar</div></div><div><div class="peng-title">Hari Raya Idul Fitri 1446H — Libur Sekolah</div><div class="peng-sub">Libur 25 Maret – 5 April 2025. Masuk kembali 7 April 2025.</div></div></div>
+        <div class="peng-item"><div class="peng-date"><div class="peng-date-d">5</div><div class="peng-date-m">Mei</div></div><div><div class="peng-title">Pembukaan Pendaftaran PPDB Reguler 2025/2026</div><div class="peng-sub">Pendaftaran online melalui website sekolah dan portal PPDB Kota BDL.</div></div></div>
+        <div class="peng-item"><div class="peng-date"><div class="peng-date-d">12</div><div class="peng-date-m">Mei</div></div><div><div class="peng-title">Ujian Sekolah Kelas XII</div><div class="peng-sub">Pelaksanaan Ujian Sekolah untuk kelas XII sebagai syarat kelulusan.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GALERI ═══ -->
+<section id="galeri">
+  <div class="sec">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;" class="reveal">
+      <div>
+        <div class="tag light">Dokumentasi</div>
+        <h2 class="h2 light">Galeri Foto & Video</h2>
+      </div>
+      <!-- "Lihat Semua" membuka modal -->
+      <button onclick="UI.openGalleryModal()" class="lihat-semua-btn">
+        Lihat Semua Foto (27) →
+      </button>
+    </div>
+    <!-- Preview 7 foto di beranda -->
+    <div class="galeri-grid reveal rd1">
+      <div class="g-item s2c s2r">🎓<div class="g-ov"><div class="g-ov-icon">🔍</div><div class="g-ov-label">Wisuda Kelas XII 2024</div></div></div>
+      <div class="g-item">🏆<div class="g-ov"><div class="g-ov-icon">🔍</div><div class="g-ov-label">Kompetisi OSN</div></div></div>
+      <div class="g-item">⚽<div class="g-ov"><div class="g-ov-icon">🔍</div><div class="g-ov-label">Liga Pelajar Kota</div></div></div>
+      <div class="g-item">🎵<div class="g-ov"><div class="g-ov-icon">🔍</div><div class="g-ov-label">Pentas Seni Tahunan</div></div></div>
+      <div class="g-item">🔬<div class="g-ov"><div class="g-ov-icon">🔍</div><div class="g-ov-label">Praktikum Lab Kimia</div></div></div>
+      <div class="g-item">🌿<div class="g-ov"><div class="g-ov-icon">🔍</div><div class="g-ov-label">Projek P5 Lingkungan</div></div></div>
+      <div class="g-item s2c">🤝<div class="g-ov"><div class="g-ov-icon">▶</div><div class="g-ov-label">Video Profil Sekolah 2024</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GALLERY MODAL (POPUP FULL SCREEN) ═══ -->
+<div id="gallery-modal" class="gallery-modal">
+  <div class="gallery-modal-header">
+    <div class="gm-header-left">
+      <div class="gallery-modal-title">📸 Galeri Foto SMAN 1 Bandar Lampung</div>
+      <div class="gallery-modal-meta" id="gallery-modal-meta">27 foto · Halaman 1 dari 3</div>
+    </div>
+    <button class="gallery-modal-close" onclick="UI.closeGalleryModal()">✕</button>
+  </div>
+
+  <!-- Filter kategori -->
+  <div class="gallery-filter-bar">
+    <button class="gf-btn on" data-cat="semua"    onclick="UI.filterGallery(this,'semua')">Semua</button>
+    <button class="gf-btn"    data-cat="acara"     onclick="UI.filterGallery(this,'acara')">Acara Sekolah</button>
+    <button class="gf-btn"    data-cat="prestasi"  onclick="UI.filterGallery(this,'prestasi')">Prestasi</button>
+    <button class="gf-btn"    data-cat="olahraga"  onclick="UI.filterGallery(this,'olahraga')">Olahraga</button>
+    <button class="gf-btn"    data-cat="seni"      onclick="UI.filterGallery(this,'seni')">Seni & Budaya</button>
+    <button class="gf-btn"    data-cat="akademik"  onclick="UI.filterGallery(this,'akademik')">Akademik</button>
+  </div>
+
+  <!-- 3×3 grid -->
+  <div class="gallery-modal-body">
+    <div id="gallery-modal-grid" class="gallery-modal-grid"></div>
+  </div>
+
+  <!-- Footer: info + pagination -->
+  <div class="gallery-modal-footer">
+    <div class="gm-total-info" id="gm-total-info"></div>
+    <div id="gallery-pagination" class="pagination"></div>
+  </div>
+</div>
+
+<!-- ═══ UNDUHAN ═══ -->
+<section id="unduhan">
+  <div class="sec">
+    <div class="reveal" style="margin-bottom:2rem;">
+      <div class="tag">Layanan Digital</div>
+      <h2 class="h2">Unduhan Dokumen Resmi</h2>
+      <p class="lead">Dokumen resmi sekolah, surat edaran, dan formulir yang dapat diunduh secara gratis.</p>
+    </div>
+    <div class="unduh-cats reveal rd1">
+      <button class="filter-btn on" onclick="filterUnduh(this,'semua')">Semua</button>
+      <button class="filter-btn"    onclick="filterUnduh(this,'formulir')">Formulir</button>
+      <button class="filter-btn"    onclick="filterUnduh(this,'surat')">Surat Edaran</button>
+      <button class="filter-btn"    onclick="filterUnduh(this,'panduan')">Panduan</button>
+      <button class="filter-btn"    onclick="filterUnduh(this,'akademik-doc')">Akademik</button>
+    </div>
+    <div class="unduh-grid reveal rd2">
+      <a href="#" class="unduh-item" data-cat="formulir"><div class="unduh-ico">📋</div><div><div class="unduh-name">Formulir Pendaftaran PPDB 2025/2026</div><div class="unduh-meta">PDF · 312 KB · Diperbarui Feb 2025</div></div><div class="unduh-dl">⬇</div></a>
+      <a href="#" class="unduh-item" data-cat="akademik-doc"><div class="unduh-ico">📅</div><div><div class="unduh-name">Kalender Akademik 2024/2025</div><div class="unduh-meta">PDF · 1.4 MB · Diperbarui Jul 2024</div></div><div class="unduh-dl">⬇</div></a>
+      <a href="#" class="unduh-item" data-cat="surat"><div class="unduh-ico">📜</div><div><div class="unduh-name">Surat Edaran Jadwal UTS Genap</div><div class="unduh-meta">PDF · 245 KB · Diperbarui Feb 2025</div></div><div class="unduh-dl">⬇</div></a>
+      <a href="#" class="unduh-item" data-cat="panduan"><div class="unduh-ico">📖</div><div><div class="unduh-name">Tata Tertib Siswa 2024/2025</div><div class="unduh-meta">PDF · 920 KB · Diperbarui Agt 2024</div></div><div class="unduh-dl">⬇</div></a>
+      <a href="#" class="unduh-item" data-cat="formulir"><div class="unduh-ico">📄</div><div><div class="unduh-name">Template Surat Keterangan Aktif</div><div class="unduh-meta">DOCX · 88 KB · Formulir Resmi</div></div><div class="unduh-dl">⬇</div></a>
+      <a href="#" class="unduh-item" data-cat="akademik-doc"><div class="unduh-ico">📊</div><div><div class="unduh-name">Jadwal Pelajaran Semester Genap</div><div class="unduh-meta">PDF · 620 KB · Diperbarui Jan 2025</div></div><div class="unduh-dl">⬇</div></a>
+      <a href="#" class="unduh-item" data-cat="panduan"><div class="unduh-ico">🏅</div><div><div class="unduh-name">Panduan Beasiswa PIP & KIP</div><div class="unduh-meta">PDF · 1.9 MB · Diperbarui Jan 2025</div></div><div class="unduh-dl">⬇</div></a>
+      <a href="#" class="unduh-item" data-cat="surat"><div class="unduh-ico">✉️</div><div><div class="unduh-name">SE Himbauan Penggunaan Seragam</div><div class="unduh-meta">PDF · 180 KB · Diperbarui Jan 2025</div></div><div class="unduh-dl">⬇</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DATA SISWA ═══ -->
+<section id="data-siswa">
+  <div class="sec">
+    <div class="sec-hd reveal">
+      <div class="tag">Data Siswa</div>
+      <h2 class="h2">Direktori Siswa<br>Aktif SMAN 1</h2>
+      <p class="lead">Temukan data siswa aktif SMA Negeri 1 Bandar Lampung. Gunakan pencarian dan filter untuk menemukan siswa yang Anda cari.</p>
+    </div>
+
+    <!-- Stats bar -->
+    <div class="ds-stats reveal rd1" id="ds-stats">
+      <div class="ds-stat-item"><span class="ds-stat-val" id="ds-total">—</span><span class="ds-stat-lbl">Total Siswa</span></div>
+      <div class="ds-stat-item"><span class="ds-stat-val" id="ds-aktif">—</span><span class="ds-stat-lbl">Siswa Aktif</span></div>
+      <div class="ds-stat-item"><span class="ds-stat-val" id="ds-x">—</span><span class="ds-stat-lbl">Kelas X</span></div>
+      <div class="ds-stat-item"><span class="ds-stat-val" id="ds-xi">—</span><span class="ds-stat-lbl">Kelas XI</span></div>
+      <div class="ds-stat-item"><span class="ds-stat-val" id="ds-xii">—</span><span class="ds-stat-lbl">Kelas XII</span></div>
+    </div>
+
+    <!-- Filter & Search -->
+    <div class="ds-toolbar reveal rd2">
+      <div class="ds-search-wrap">
+        <span class="ds-search-ico">🔍</span>
+        <input type="text" id="ds-q" class="ds-search" placeholder="Cari nama siswa..." oninput="DS.onSearch()">
+      </div>
+      <select class="ds-filter" id="ds-kelas" onchange="DS.load(1)">
+        <option value="">Semua Kelas</option>
+      </select>
+      <select class="ds-filter" id="ds-jurusan" onchange="DS.load(1)">
+        <option value="">Semua Jurusan</option>
+        <option value="MIPA">MIPA</option>
+        <option value="IPS">IPS</option>
+        <option value="Bahasa">Bahasa</option>
+      </select>
+      <button class="ds-reset-btn" id="ds-reset" onclick="DS.reset()" style="display:none">✕ Reset</button>
+    </div>
+
+    <!-- Grid kartu siswa -->
+    <div class="ds-grid" id="ds-grid">
+      <!-- Skeleton loading -->
+      <div class="ds-skeleton"></div><div class="ds-skeleton"></div>
+      <div class="ds-skeleton"></div><div class="ds-skeleton"></div>
+      <div class="ds-skeleton"></div><div class="ds-skeleton"></div>
+    </div>
+
+    <!-- Status: error / kosong -->
+    <div class="ds-empty" id="ds-empty" style="display:none">
+      <div class="ds-empty-ico">🔍</div>
+      <div class="ds-empty-txt">Tidak ada siswa yang sesuai pencarian</div>
+      <button class="ds-reset-btn" onclick="DS.reset()">Reset Filter</button>
+    </div>
+
+    <div class="ds-error" id="ds-error" style="display:none">
+      <div class="ds-empty-ico">⚠️</div>
+      <div class="ds-empty-txt" id="ds-error-txt">Gagal memuat data.<br>Pastikan server Laravel sudah berjalan.</div>
+      <button class="ds-reset-btn" onclick="DS.load(1)">Coba Lagi</button>
+    </div>
+
+    <!-- Pagination -->
+    <div class="ds-pgbar" id="ds-pgbar" style="display:none">
+      <div class="ds-pg-info" id="ds-pg-info"></div>
+      <div class="pagination" id="ds-pagination"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ KONTAK ═══ -->
+<section id="kontak">
+  <div class="sec">
+    <div class="kontak-grid">
+      <div class="reveal">
+        <div class="tag light">Hubungi Kami</div>
+        <h2 class="h2 light">Kami Siap<br>Membantu Anda</h2>
+        <p class="lead light">Jangan ragu untuk menghubungi kami. Tim kami siap memberikan informasi yang Anda butuhkan.</p>
+        <div class="kontak-items">
+          <div class="ki"><div class="ki-ic">📍</div><div><div class="ki-lbl">Alamat</div><div class="ki-val">Jl. Jend. Sudirman No. 41, Enggal<br>Bandar Lampung 35118, Lampung</div></div></div>
+          <div class="ki"><div class="ki-ic">📞</div><div><div class="ki-lbl">Telepon & WhatsApp</div><div class="ki-val">(0721) 262-185 &nbsp;|&nbsp; +62 821-7890-0001 (WA)</div></div></div>
+          <div class="ki"><div class="ki-ic">✉️</div><div><div class="ki-lbl">Email Resmi</div><div class="ki-val">info@smansa-bdl.sch.id<br>ppdb@smansa-bdl.sch.id</div></div></div>
+          <div class="ki"><div class="ki-ic">🕐</div><div><div class="ki-lbl">Jam Layanan</div><div class="ki-val">Senin – Sabtu: 07.00 – 15.30 WIB<br>Minggu & Libur Nasional: Tutup</div></div></div>
+        </div>
+        <div class="map-box"><div class="map-box-pin">📌</div><div class="map-box-txt">GOOGLE MAPS — SMAN 1 BANDAR LAMPUNG</div></div>
+      </div>
+      <div class="reveal rd2">
+        <div class="form-ttl">Kirim Pesan kepada Kami</div>
+        <div class="frow">
+          <div class="fg"><label class="flbl">Nama Lengkap</label><input type="text" class="finput" placeholder="Nama Anda"></div>
+          <div class="fg"><label class="flbl">No. Telepon</label><input type="tel" class="finput" placeholder="+62 ..."></div>
+        </div>
+        <div class="fg"><label class="flbl">Alamat Email</label><input type="email" class="finput" placeholder="email@contoh.com"></div>
+        <div class="fg">
+          <label class="flbl">Topik Pertanyaan</label>
+          <select class="finput" style="cursor:pointer;">
+            <option value="">Pilih topik...</option>
+            <option>Informasi PPDB 2025/2026</option>
+            <option>Beasiswa & KIP</option>
+            <option>Ekstrakurikuler</option>
+            <option>Administrasi & Surat Menyurat</option>
+            <option>Kegiatan Sekolah</option>
+            <option>Lainnya</option>
+          </select>
+        </div>
+        <div class="fg"><label class="flbl">Isi Pesan</label><textarea class="finput" placeholder="Tulis pesan Anda di sini..."></textarea></div>
+        <button class="fsubmit" onclick="Form.submit(this)">Kirim Pesan →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-top">
+      <div>
+        <div class="ft-brand-logo">
+          <div class="nav-emblem">1</div>
+          <div class="nav-brand-txt">
+            <span class="nav-brand-name">SMA Negeri 1 Bandar Lampung</span>
+            <span class="nav-brand-url">smansa-bdl.sch.id</span>
+          </div>
+        </div>
+        <p class="ft-tagline">Sekolah unggulan kebanggaan Lampung. Membentuk generasi cerdas, berkarakter, dan berprestasi sejak 1952.</p>
+        <div class="ft-socials">
+          <a href="#" class="ft-soc" title="Instagram">ig</a>
+          <a href="#" class="ft-soc" title="Facebook">f</a>
+          <a href="#" class="ft-soc" title="YouTube">▶</a>
+          <a href="#" class="ft-soc" title="Twitter/X">𝕏</a>
+          <a href="#" class="ft-soc" title="TikTok">♪</a>
+        </div>
+      </div>
+      <div>
+        <div class="ft-col-title">Menu Sekolah</div>
+        <ul class="ft-links">
+          <li><a href="#beranda">Beranda</a></li>
+          <li><a href="#profil">Profil Sekolah</a></li>
+          <li><a href="#struktur">Struktur Organisasi</a></li>
+          <li><a href="#guru">Guru & Tendik</a></li>
+          <li><a href="#akademik">Akademik</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft-col-title">Kesiswaan</div>
+        <ul class="ft-links">
+          <li><a href="#kesiswaan">OSIS & MPK</a></li>
+          <li><a href="#kesiswaan">Ekstrakurikuler</a></li>
+          <li><a href="#kesiswaan">Prestasi Siswa</a></li>
+          <li><a href="#data-siswa">Data Siswa Aktif</a></li>
+          <li><a href="#berita">Berita & Info</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft-col-title">Kontak</div>
+        <div class="ft-contact-item"><span>📍</span> Jl. Jend. Sudirman No. 41, Enggal, BDL 35118</div>
+        <div class="ft-contact-item"><span>📞</span> (0721) 262-185</div>
+        <div class="ft-contact-item"><span>✉️</span> info@smansa-bdl.sch.id</div>
+        <div class="ft-contact-item"><span>🌐</span> smansa-bdl.sch.id</div>
+        <div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
+          <div class="ft-col-title" style="margin-bottom:0.6rem">Portal Staff</div>
+          <a href="#" id="ft-admin-link" target="_blank" class="ft-admin-link">
+            🔒 Login Admin &amp; Data Siswa →
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <div class="ft-copy">© 2025 SMA Negeri 1 Bandar Lampung. Hak Cipta Dilindungi Undang-Undang.</div>
+      <div class="ft-accred">★ Akreditasi Unggul — BAN-S/M 2023</div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/slider.js"></script>
+<script src="js/kalender.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/form.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+/* Unduhan filter (inline, sederhana) */
+function filterUnduh(btn, cat) {
+  document.querySelectorAll('.unduh-cats .filter-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.unduh-item').forEach(item => {
+    item.style.display = (cat === 'semua' || item.dataset.cat === cat) ? '' : 'none';
+  });
+}
+</script>
+
+<script>
+/* ═══════════════════════════════════════════
+   DS — Data Siswa Public Module
+   Mengambil data dari Laravel API publik
+═══════════════════════════════════════════ */
+const DS = (() => {
+  const LARAVEL_URL = document.querySelector('meta[name="laravel-url"]')?.content || 'http://localhost:8000';
+  const API = `${LARAVEL_URL}/api/public`;
+
+  // Set semua link admin secara dinamis
+  document.querySelectorAll('#nav-admin-link, #ft-admin-link').forEach(a => {
+    a.href = `${LARAVEL_URL}/login`;
+  });
+  const errTxt = document.getElementById('ds-error-txt');
+  if (errTxt) errTxt.innerHTML = `Gagal memuat data.<br>Pastikan server Laravel berjalan di <code>${LARAVEL_URL}</code>`;
+  let currentPage = 1;
+  let searchTimer;
+
+  // ── Init: muat kelas & stats saat halaman siap ──
+  async function init() {
+    await Promise.all([loadStats(), loadKelas()]);
+    await load(1);
+  }
+
+  // ── Statistik ringkasan ──
+  async function loadStats() {
+    try {
+      const r = await fetch(`${API}/stats`);
+      const j = await r.json();
+      if (!j.success) return;
+      const d = j.data;
+      document.getElementById('ds-total').textContent = Number(d.total).toLocaleString('id');
+      document.getElementById('ds-aktif').textContent = Number(d.aktif).toLocaleString('id');
+      document.getElementById('ds-x').textContent     = Number(d.kelas_x).toLocaleString('id');
+      document.getElementById('ds-xi').textContent    = Number(d.kelas_xi).toLocaleString('id');
+      document.getElementById('ds-xii').textContent   = Number(d.kelas_xii).toLocaleString('id');
+    } catch { /* server mungkin belum jalan */ }
+  }
+
+  // ── Isi dropdown kelas dari API ──
+  async function loadKelas() {
+    try {
+      const r = await fetch(`${API}/kelas`);
+      const j = await r.json();
+      if (!j.success) return;
+      const sel = document.getElementById('ds-kelas');
+      j.data.forEach(k => {
+        const opt = document.createElement('option');
+        opt.value = k; opt.textContent = k;
+        sel.appendChild(opt);
+      });
+    } catch { /* fallback static */ }
+  }
+
+  // ── Muat data siswa ──
+  async function load(page = 1) {
+    currentPage = page;
+    const q       = document.getElementById('ds-q').value.trim();
+    const kelas   = document.getElementById('ds-kelas').value;
+    const jurusan = document.getElementById('ds-jurusan').value;
+
+    // Tampilkan / sembunyikan tombol reset
+    document.getElementById('ds-reset').style.display =
+      (q || kelas || jurusan) ? 'inline-flex' : 'none';
+
+    // Tampilkan skeleton
+    const grid = document.getElementById('ds-grid');
+    grid.innerHTML = Array(12).fill('<div class="ds-skeleton"></div>').join('');
+    grid.style.display = 'grid';
+    document.getElementById('ds-empty').style.display  = 'none';
+    document.getElementById('ds-error').style.display  = 'none';
+    document.getElementById('ds-pgbar').style.display  = 'none';
+
+    const params = new URLSearchParams({ page, q, kelas, jurusan });
+    try {
+      const r = await fetch(`${API}/siswa?${params}`);
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const j = await r.json();
+      if (!j.success) throw new Error(j.message);
+
+      const rows = j.data;
+      if (!rows.length) {
+        grid.style.display = 'none';
+        document.getElementById('ds-empty').style.display = 'flex';
+        return;
+      }
+
+      // Render kartu
+      grid.innerHTML = rows.map(s => cardHTML(s)).join('');
+
+      // Pagination
+      const meta = j.meta;
+      if (meta.last_page > 1) {
+        const pgBar  = document.getElementById('ds-pgbar');
+        const pgInfo = document.getElementById('ds-pg-info');
+        const start  = (meta.current_page - 1) * meta.per_page + 1;
+        const end    = Math.min(meta.current_page * meta.per_page, meta.total);
+        pgInfo.textContent = `Menampilkan ${start}–${end} dari ${meta.total} siswa`;
+        buildPagination('ds-pagination', meta.total, meta.per_page, meta.current_page, load);
+        pgBar.style.display = 'flex';
+      }
+    } catch(e) {
+      grid.style.display = 'none';
+      document.getElementById('ds-error').style.display = 'flex';
+      console.warn('DS Error:', e);
+    }
+  }
+
+  // ── Buat HTML kartu siswa ──
+  function cardHTML(s) {
+    const ava   = s.foto_url
+      ? `<img src="${s.foto_url}" alt="${esc(s.nama)}" class="ds-card-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+      : '';
+    const emoji = s.jenis_kelamin === 'L' ? '👦' : '👧';
+    const jBadge = s.jurusan ? `<span class="ds-badge ds-b-${s.jurusan.toLowerCase()}">${s.jurusan}</span>` : '';
+    const jkBadge = `<span class="ds-badge ${s.jenis_kelamin === 'L' ? 'ds-b-l' : 'ds-b-p'}">${s.jenis_kelamin === 'L' ? 'L' : 'P'}</span>`;
+
+    return `
+    <div class="ds-card reveal">
+      <div class="ds-card-ava">
+        ${ava}
+        <div class="ds-card-ava-fallback" style="${s.foto_url ? 'display:none' : 'display:flex'}">${emoji}</div>
+      </div>
+      <div class="ds-card-body">
+        <div class="ds-card-name">${esc(s.nama)}</div>
+        <div class="ds-card-kelas">${s.kelas || '—'}</div>
+        <div class="ds-card-badges">${jkBadge}${jBadge}</div>
+      </div>
+    </div>`;
+  }
+
+  function esc(s) {
+    return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  // ── Build pagination ──
+  function buildPagination(containerId, total, perPage, current, cb) {
+    const totalPages = Math.ceil(total / perPage);
+    const container = document.getElementById(containerId);
+    if (!container || totalPages <= 1) { if(container) container.innerHTML=''; return; }
+
+    let html = `<button class="pg-btn pg-prev" ${current<=1?'disabled':''} onclick="DS.load(${current-1})">‹</button>`;
+    const range = [];
+    for (let i = 1; i <= totalPages; i++) {
+      if (i === 1 || i === totalPages || (i >= current - 1 && i <= current + 1)) range.push(i);
+    }
+    let prev = null;
+    for (const p of range) {
+      if (prev !== null && p - prev > 1) html += `<span class="pg-info">…</span>`;
+      html += `<button class="pg-btn ${p===current?'active':''}" onclick="DS.load(${p})">${p}</button>`;
+      prev = p;
+    }
+    html += `<button class="pg-btn pg-next" ${current>=totalPages?'disabled':''} onclick="DS.load(${current+1})">›</button>`;
+    container.innerHTML = html;
+  }
+
+  function onSearch() {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => load(1), 350);
+  }
+
+  function reset() {
+    document.getElementById('ds-q').value     = '';
+    document.getElementById('ds-kelas').value = '';
+    document.getElementById('ds-jurusan').value = '';
+    load(1);
+  }
+
+  // Auto-init saat section terlihat (IntersectionObserver)
+  const obs = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) { init(); obs.disconnect(); }
+  }, { threshold: 0.1 });
+  const sec = document.getElementById('data-siswa');
+  if (sec) obs.observe(sec);
+
+  return { load, reset, onSearch };
+})();
+</script>
+
+</body>
+</html>
