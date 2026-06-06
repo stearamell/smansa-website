@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Siswa — SMAN 1 Bandar Lampung</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══ RESET & TOKENS ═══ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --maroon:    #9B2626;
+  --maroon-dk: #5A1313;
+  --maroon-lt: #C44040;
+  --gold:      #D4A843;
+  --gold-lt:   #E8C46A;
+  --cream:     #FDF8F0;
+  --white:     #FFFFFF;
+  --g50:       #FAFAFA;
+  --g100:      #F4F4F5;
+  --g200:      #E4E4E7;
+  --g300:      #D1D1D6;
+  --g400:      #A1A1AA;
+  --g600:      #52525B;
+  --g800:      #18181B;
+  --green:     #16A34A;
+  --green-bg:  #DCFCE7;
+  --blue:      #2563EB;
+  --blue-bg:   #DBEAFE;
+  --orange:    #EA580C;
+  --orange-bg: #FFEDD5;
+  --red:       #DC2626;
+  --red-bg:    #FEE2E2;
+  --font-h:    'Fraunces', Georgia, serif;
+  --font-b:    'Plus Jakarta Sans', sans-serif;
+  --font-m:    'Fira Code', monospace;
+  --radius:    10px;
+  --shadow:    0 2px 8px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.14);
+  --ease:      cubic-bezier(0.4, 0, 0.2, 1);
+}
+html { font-size: 16px; }
+body {
+  font-family: var(--font-b);
+  background: var(--g100);
+  color: var(--g800);
+  min-height: 100vh;
+}
+button { font-family: var(--font-b); cursor: pointer; }
+input, select, textarea { font-family: var(--font-b); }
+a { text-decoration: none; }
+
+/* ═══ TOPBAR ═══ */
+.topbar {
+  background: var(--maroon-dk);
+  border-bottom: 2px solid var(--gold);
+  padding: 0 2rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.topbar-left   { display: flex; align-items: center; gap: 1rem; }
+.topbar-emblem {
+  width: 36px; height: 36px; background: var(--gold);
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-h); font-weight: 900; font-size: 1rem; color: var(--maroon-dk);
+}
+.topbar-title  { font-family: var(--font-h); font-weight: 700; font-size: 1rem; color: #fff; }
+.topbar-sub    { font-family: var(--font-m); font-size: 0.65rem; color: rgba(212,168,67,0.7); letter-spacing: 0.08em; }
+.topbar-right  { display: flex; align-items: center; gap: 0.75rem; }
+.topbar-back {
+  display: flex; align-items: center; gap: 0.4rem;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.75); padding: 0.38rem 0.9rem;
+  border-radius: 100px; font-size: 0.78rem; font-weight: 600; transition: all 0.2s;
+}
+.topbar-back:hover { background: rgba(212,168,67,0.15); border-color: var(--gold); color: var(--gold); }
+
+/* db-status badge */
+.db-status {
+  display: flex; align-items: center; gap: 0.4rem;
+  font-family: var(--font-m); font-size: 0.65rem; letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.4);
+}
+.db-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--g400); }
+.db-dot.ready { background: #4ADE80; box-shadow: 0 0 6px rgba(74,222,128,0.5); }
+
+/* ═══ LAYOUT ═══ */
+.main-wrap { max-width: 1300px; margin: 0 auto; padding: 2rem 2rem; }
+
+/* ═══ STAT CARDS ═══ */
+.stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.75rem; }
+.stat-card {
+  background: var(--white); border: 1px solid var(--g200);
+  border-radius: var(--radius); padding: 1.25rem 1.4rem;
+  display: flex; align-items: center; gap: 1rem;
+  transition: box-shadow 0.2s;
+}
+.stat-card:hover { box-shadow: var(--shadow); }
+.stat-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0;
+}
+.stat-icon.blue   { background: var(--blue-bg); }
+.stat-icon.green  { background: var(--green-bg); }
+.stat-icon.orange { background: var(--orange-bg); }
+.stat-icon.red    { background: var(--red-bg); }
+.stat-label { font-size: 0.72rem; color: var(--g400); font-family: var(--font-m); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.2rem; }
+.stat-value { font-family: var(--font-h); font-size: 1.6rem; font-weight: 700; color: var(--g800); line-height: 1; }
+
+/* ═══ TOOLBAR ═══ */
+.toolbar {
+  display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;
+  background: var(--white); border: 1px solid var(--g200);
+  border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: 1rem;
+}
+.search-wrap {
+  flex: 1; min-width: 220px; position: relative;
+}
+.search-ico {
+  position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%);
+  font-size: 0.85rem; color: var(--g400); pointer-events: none;
+}
+.search-input {
+  width: 100%; padding: 0.55rem 0.85rem 0.55rem 2.25rem;
+  border: 1px solid var(--g200); border-radius: 8px;
+  font-size: 0.85rem; background: var(--g50); color: var(--g800); outline: none;
+  transition: all 0.2s;
+}
+.search-input:focus { border-color: var(--maroon-lt); background: #fff; box-shadow: 0 0 0 3px rgba(155,38,38,0.08); }
+.search-input::placeholder { color: var(--g400); }
+
+.filter-select {
+  padding: 0.55rem 0.85rem; border: 1px solid var(--g200); border-radius: 8px;
+  font-size: 0.82rem; background: var(--g50); color: var(--g800); outline: none;
+  cursor: pointer; transition: border-color 0.2s;
+}
+.filter-select:focus { border-color: var(--maroon-lt); }
+
+.toolbar-btn {
+  display: flex; align-items: center; gap: 0.4rem;
+  padding: 0.55rem 1.1rem; border-radius: 8px;
+  font-size: 0.82rem; font-weight: 600; border: none;
+  transition: all 0.2s;
+}
+.btn-primary { background: var(--maroon-dk); color: #fff; }
+.btn-primary:hover { background: var(--maroon); }
+.btn-export  { background: var(--green-bg); color: var(--green); border: 1px solid rgba(22,163,74,0.2); }
+.btn-export:hover { background: #BBF7D0; }
+.btn-import  { background: var(--blue-bg); color: var(--blue); border: 1px solid rgba(37,99,235,0.2); }
+.btn-import:hover { background: #BFDBFE; }
+.btn-danger  { background: var(--red-bg); color: var(--red); border: 1px solid rgba(220,38,38,0.2); }
+.btn-danger:hover { background: #FECACA; }
+
+/* ═══ TABLE ═══ */
+.table-wrap {
+  background: var(--white); border: 1px solid var(--g200);
+  border-radius: var(--radius); overflow: hidden; margin-bottom: 1rem;
+}
+.table-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 1.25rem; border-bottom: 1px solid var(--g200); background: var(--g50);
+}
+.table-title { font-weight: 700; font-size: 0.9rem; color: var(--g800); }
+.table-count { font-family: var(--font-m); font-size: 0.68rem; color: var(--g400); letter-spacing: 0.06em; }
+
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th {
+  padding: 0.75rem 1rem; text-align: left;
+  font-family: var(--font-m); font-size: 0.65rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--g400); font-weight: 500;
+  background: var(--g50); border-bottom: 1px solid var(--g200);
+  cursor: pointer; user-select: none; white-space: nowrap;
+}
+.data-table th:hover { color: var(--maroon); }
+.data-table th .sort-arrow { margin-left: 0.3rem; opacity: 0.4; font-size: 0.6rem; }
+.data-table th.sorted .sort-arrow { opacity: 1; color: var(--maroon); }
+
+.data-table td {
+  padding: 0.85rem 1rem; font-size: 0.84rem; color: var(--g800);
+  border-bottom: 1px solid var(--g100); vertical-align: middle;
+}
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: rgba(155,38,38,0.025); }
+.data-table tr.selected td { background: rgba(212,168,67,0.06); }
+
+.td-nisn  { font-family: var(--font-m); font-size: 0.78rem; color: var(--g600); }
+.td-nama  { font-weight: 600; color: var(--maroon-dk); }
+.td-kelas { font-family: var(--font-m); font-size: 0.78rem; }
+
+.badge {
+  display: inline-flex; align-items: center;
+  padding: 0.18rem 0.65rem; border-radius: 100px;
+  font-family: var(--font-m); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.04em;
+}
+.badge-l  { background: var(--blue-bg);   color: var(--blue); }
+.badge-p  { background: var(--orange-bg); color: var(--orange); }
+.badge-aktif  { background: var(--green-bg); color: var(--green); }
+.badge-alumni { background: var(--g100); color: var(--g600); }
+.badge-mutasi { background: var(--red-bg); color: var(--red); }
+
+.td-actions { display: flex; gap: 0.4rem; }
+.act-btn {
+  width: 30px; height: 30px; border-radius: 6px; border: 1px solid var(--g200);
+  background: var(--g50); display: flex; align-items: center; justify-content: center;
+  font-size: 0.78rem; cursor: pointer; transition: all 0.15s;
+}
+.act-btn.edit:hover   { background: var(--blue-bg); border-color: var(--blue); color: var(--blue); }
+.act-btn.delete:hover { background: var(--red-bg); border-color: var(--red); color: var(--red); }
+
+/* Empty state */
+.empty-state {
+  padding: 4rem; text-align: center;
+}
+.empty-state-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.4; }
+.empty-state-text { font-size: 0.9rem; color: var(--g400); }
+
+/* ═══ PAGINATION ═══ */
+.pagination-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  background: var(--white); border: 1px solid var(--g200);
+  border-radius: var(--radius); flex-wrap: wrap; gap: 0.75rem;
+}
+.pg-info-text { font-size: 0.78rem; color: var(--g400); }
+.pg-btns { display: flex; gap: 0.3rem; }
+.pg-btn {
+  min-width: 32px; height: 32px; padding: 0 0.5rem;
+  border-radius: 7px; border: 1px solid var(--g200);
+  background: var(--white); color: var(--g600);
+  font-size: 0.8rem; font-weight: 600; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s;
+}
+.pg-btn:hover  { border-color: var(--maroon-lt); color: var(--maroon); }
+.pg-btn.active { background: var(--maroon-dk); border-color: var(--maroon-dk); color: #fff; }
+.pg-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.pg-per-page { display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; color: var(--g400); }
+.pg-per-page select { padding: 0.25rem 0.5rem; border: 1px solid var(--g200); border-radius: 6px; font-size: 0.78rem; background: var(--g50); }
+
+/* ═══ MODAL ═══ */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0,0,0,0.55); backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center; padding: 1.5rem;
+  opacity: 0; pointer-events: none; transition: opacity 0.25s var(--ease);
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal {
+  background: var(--white); border-radius: 16px;
+  box-shadow: var(--shadow-lg); width: 100%; max-width: 640px;
+  transform: scale(0.96) translateY(12px);
+  transition: transform 0.25s var(--ease);
+  max-height: 90vh; display: flex; flex-direction: column;
+}
+.modal-overlay.open .modal { transform: scale(1) translateY(0); }
+
+.modal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.4rem 1.75rem; border-bottom: 1px solid var(--g200);
+}
+.modal-title { font-family: var(--font-h); font-size: 1.2rem; font-weight: 700; color: var(--maroon-dk); }
+.modal-close {
+  width: 32px; height: 32px; border-radius: 8px;
+  border: 1px solid var(--g200); background: var(--g50);
+  font-size: 0.9rem; color: var(--g600); cursor: pointer; transition: all 0.15s;
+  display: flex; align-items: center; justify-content: center;
+}
+.modal-close:hover { background: var(--red-bg); border-color: var(--red); color: var(--red); }
+
+.modal-body { padding: 1.5rem 1.75rem; overflow-y: auto; flex: 1; }
+.modal-footer {
+  padding: 1.1rem 1.75rem; border-top: 1px solid var(--g200);
+  display: flex; align-items: center; justify-content: flex-end; gap: 0.65rem;
+}
+
+/* Form grid */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-grid .full { grid-column: span 2; }
+.fg { display: flex; flex-direction: column; gap: 0.35rem; }
+.flbl { font-size: 0.72rem; font-weight: 600; color: var(--g600); letter-spacing: 0.04em; }
+.flbl .req { color: var(--red); margin-left: 2px; }
+.finput {
+  padding: 0.6rem 0.85rem; border: 1px solid var(--g200); border-radius: 8px;
+  font-size: 0.85rem; color: var(--g800); background: var(--g50); outline: none; transition: all 0.2s;
+}
+.finput:focus { border-color: var(--maroon-lt); background: #fff; box-shadow: 0 0 0 3px rgba(155,38,38,0.08); }
+.finput.err   { border-color: var(--red); }
+.finput::placeholder { color: var(--g300); }
+.ferr { font-size: 0.7rem; color: var(--red); }
+
+.btn-cancel {
+  padding: 0.6rem 1.25rem; border-radius: 8px;
+  background: var(--g100); border: 1px solid var(--g200);
+  font-size: 0.84rem; font-weight: 600; color: var(--g600);
+  cursor: pointer; transition: all 0.2s;
+}
+.btn-cancel:hover { background: var(--g200); }
+.btn-save {
+  padding: 0.6rem 1.4rem; border-radius: 8px;
+  background: var(--maroon-dk); border: none;
+  font-size: 0.84rem; font-weight: 700; color: #fff;
+  cursor: pointer; transition: all 0.2s;
+}
+.btn-save:hover { background: var(--maroon); }
+
+/* ═══ TOAST ═══ */
+.toast-wrap {
+  position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 9999;
+  display: flex; flex-direction: column; gap: 0.5rem; pointer-events: none;
+}
+.toast {
+  display: flex; align-items: center; gap: 0.75rem;
+  background: var(--g800); color: #fff; border-radius: 10px;
+  padding: 0.75rem 1.1rem; font-size: 0.84rem; font-weight: 500;
+  box-shadow: var(--shadow-lg); pointer-events: all;
+  transform: translateX(120%); transition: transform 0.3s var(--ease);
+  max-width: 320px;
+}
+.toast.show { transform: translateX(0); }
+.toast.success { background: #15803D; }
+.toast.error   { background: #B91C1C; }
+.toast-icon    { font-size: 1rem; flex-shrink: 0; }
+
+/* ═══ DETAIL MODAL ═══ */
+.detail-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem;
+}
+.detail-item { background: var(--g50); border-radius: 8px; padding: 0.75rem 1rem; }
+.detail-item.full { grid-column: span 2; }
+.detail-lbl { font-family: var(--font-m); font-size: 0.62rem; letter-spacing: 0.08em; color: var(--g400); text-transform: uppercase; margin-bottom: 0.25rem; }
+.detail-val { font-size: 0.88rem; font-weight: 600; color: var(--g800); }
+
+/* ═══ CONFIRM DIALOG ═══ */
+.confirm-modal {
+  background: var(--white); border-radius: 16px;
+  box-shadow: var(--shadow-lg); width: 100%; max-width: 400px;
+  padding: 2rem; text-align: center;
+  transform: scale(0.96);
+  transition: transform 0.25s var(--ease);
+}
+.modal-overlay.open .confirm-modal { transform: scale(1); }
+.confirm-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+.confirm-title { font-family: var(--font-h); font-size: 1.2rem; font-weight: 700; color: var(--g800); margin-bottom: 0.5rem; }
+.confirm-desc  { font-size: 0.84rem; color: var(--g400); line-height: 1.6; margin-bottom: 1.5rem; }
+.confirm-btns  { display: flex; gap: 0.75rem; justify-content: center; }
+
+/* ═══ LOADING ═══ */
+.loading-overlay {
+  position: fixed; inset: 0; background: var(--maroon-dk);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  z-index: 9999; gap: 1rem;
+}
+.loading-spinner {
+  width: 48px; height: 48px; border: 3px solid rgba(212,168,67,0.2);
+  border-top-color: var(--gold); border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading-text { font-family: var(--font-m); font-size: 0.72rem; color: rgba(212,168,67,0.6); letter-spacing: 0.12em; }
+
+/* ═══ UTIL ═══ */
+.mt-1 { margin-top: 1rem; }
+@media (max-width: 768px) {
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-grid .full { grid-column: span 1; }
+  .main-wrap { padding: 1.25rem; }
+  .data-table th:nth-child(n+6),
+  .data-table td:nth-child(n+6) { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Loading Screen -->
+<div class="loading-overlay" id="loading">
+  <div class="loading-spinner"></div>
+  <div class="loading-text">MEMUAT DATABASE SQLite...</div>
+</div>
+
+<!-- Topbar -->
+<nav class="topbar">
+  <div class="topbar-left">
+    <div class="topbar-emblem">1</div>
+    <div>
+      <div class="topbar-title">Data Siswa</div>
+      <div class="topbar-sub">SMAN 1 BANDAR LAMPUNG</div>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <div class="db-status">
+      <div class="db-dot" id="db-dot"></div>
+      <span id="db-status-text">Memuat...</span>
+    </div>
+    <a href="index.html" class="topbar-back">← Kembali ke Website</a>
+  </div>
+</nav>
+
+<!-- Main -->
+<div class="main-wrap">
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-icon blue">👥</div>
+      <div><div class="stat-label">Total Siswa</div><div class="stat-value" id="stat-total">0</div></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon green">✅</div>
+      <div><div class="stat-label">Aktif</div><div class="stat-value" id="stat-aktif">0</div></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon orange">🎓</div>
+      <div><div class="stat-label">Alumni</div><div class="stat-value" id="stat-alumni">0</div></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon red">👨‍🎓</div>
+      <div><div class="stat-label">Kelas XII</div><div class="stat-value" id="stat-xii">0</div></div>
+    </div>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <div class="search-wrap">
+      <span class="search-ico">🔍</span>
+      <input type="text" class="search-input" id="search-input"
+             placeholder="Cari nama, NISN, atau kelas..." oninput="onSearch()">
+    </div>
+    <select class="filter-select" id="filter-kelas" onchange="applyFilter()">
+      <option value="">Semua Kelas</option>
+      <option>X-1</option><option>X-2</option><option>X-3</option><option>X-4</option>
+      <option>X-5</option><option>XI-1</option><option>XI-2</option><option>XI-3</option>
+      <option>XI-4</option><option>XI-5</option><option>XII-1</option><option>XII-2</option>
+      <option>XII-3</option><option>XII-4</option><option>XII-5</option>
+    </select>
+    <select class="filter-select" id="filter-jk" onchange="applyFilter()">
+      <option value="">Semua JK</option>
+      <option value="L">Laki-laki</option>
+      <option value="P">Perempuan</option>
+    </select>
+    <select class="filter-select" id="filter-status" onchange="applyFilter()">
+      <option value="">Semua Status</option>
+      <option value="Aktif">Aktif</option>
+      <option value="Alumni">Alumni</option>
+      <option value="Mutasi">Mutasi</option>
+    </select>
+    <button class="toolbar-btn btn-primary" onclick="openModal()">＋ Tambah Siswa</button>
+    <button class="toolbar-btn btn-export"  onclick="exportCSV()">↓ Export CSV</button>
+    <button class="toolbar-btn btn-import"  onclick="document.getElementById('import-file').click()">↑ Import CSV</button>
+    <input type="file" id="import-file" accept=".csv" style="display:none" onchange="importCSV(this)">
+  </div>
+
+  <!-- Table -->
+  <div class="table-wrap">
+    <div class="table-header">
+      <div class="table-title">Daftar Siswa</div>
+      <div class="table-count" id="table-count">Menampilkan 0 siswa</div>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="data-table" id="data-table">
+        <thead>
+          <tr>
+            <th onclick="sortBy('nisn')">NISN <span class="sort-arrow">↕</span></th>
+            <th onclick="sortBy('nama')">Nama Siswa <span class="sort-arrow">↕</span></th>
+            <th onclick="sortBy('kelas')">Kelas <span class="sort-arrow">↕</span></th>
+            <th onclick="sortBy('jenis_kelamin')">JK <span class="sort-arrow">↕</span></th>
+            <th onclick="sortBy('tahun_masuk')">T. Masuk <span class="sort-arrow">↕</span></th>
+            <th onclick="sortBy('status')">Status <span class="sort-arrow">↕</span></th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          <tr><td colspan="7"><div class="empty-state"><div class="empty-state-icon">📋</div><div class="empty-state-text">Memuat data...</div></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination-bar">
+    <div class="pg-info-text" id="pg-info">-</div>
+    <div class="pg-btns" id="pg-btns"></div>
+    <div class="pg-per-page">
+      Baris:
+      <select onchange="perPage=parseInt(this.value);currentPage=1;renderTable()">
+        <option value="10">10</option>
+        <option value="25" selected>25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+    </div>
+  </div>
+
+</div><!-- /main-wrap -->
+
+<!-- ═══ MODAL TAMBAH/EDIT SISWA ═══ -->
+<div class="modal-overlay" id="form-modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-title">Tambah Siswa Baru</div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="fg">
+          <label class="flbl">NISN <span class="req">*</span></label>
+          <input class="finput" id="f-nisn" placeholder="0012345678" maxlength="10">
+          <span class="ferr" id="e-nisn"></span>
+        </div>
+        <div class="fg">
+          <label class="flbl">NIS</label>
+          <input class="finput" id="f-nis" placeholder="Nomor Induk Sekolah">
+        </div>
+        <div class="fg full">
+          <label class="flbl">Nama Lengkap <span class="req">*</span></label>
+          <input class="finput" id="f-nama" placeholder="Nama lengkap siswa">
+          <span class="ferr" id="e-nama"></span>
+        </div>
+        <div class="fg">
+          <label class="flbl">Jenis Kelamin <span class="req">*</span></label>
+          <select class="finput" id="f-jk">
+            <option value="">Pilih...</option>
+            <option value="L">Laki-laki</option>
+            <option value="P">Perempuan</option>
+          </select>
+          <span class="ferr" id="e-jk"></span>
+        </div>
+        <div class="fg">
+          <label class="flbl">Tempat Lahir</label>
+          <input class="finput" id="f-ttl-kota" placeholder="Kota lahir">
+        </div>
+        <div class="fg">
+          <label class="flbl">Tanggal Lahir</label>
+          <input class="finput" type="date" id="f-ttl-tgl">
+        </div>
+        <div class="fg">
+          <label class="flbl">Kelas <span class="req">*</span></label>
+          <select class="finput" id="f-kelas">
+            <option value="">Pilih kelas...</option>
+            <optgroup label="Kelas X">
+              <option>X-1</option><option>X-2</option><option>X-3</option><option>X-4</option><option>X-5</option>
+            </optgroup>
+            <optgroup label="Kelas XI">
+              <option>XI-1</option><option>XI-2</option><option>XI-3</option><option>XI-4</option><option>XI-5</option>
+            </optgroup>
+            <optgroup label="Kelas XII">
+              <option>XII-1</option><option>XII-2</option><option>XII-3</option><option>XII-4</option><option>XII-5</option>
+            </optgroup>
+          </select>
+          <span class="ferr" id="e-kelas"></span>
+        </div>
+        <div class="fg">
+          <label class="flbl">Jurusan</label>
+          <select class="finput" id="f-jurusan">
+            <option value="">Pilih...</option>
+            <option>MIPA</option>
+            <option>IPS</option>
+            <option>Bahasa</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label class="flbl">Tahun Masuk <span class="req">*</span></label>
+          <input class="finput" id="f-masuk" placeholder="2024" maxlength="4">
+          <span class="ferr" id="e-masuk"></span>
+        </div>
+        <div class="fg">
+          <label class="flbl">Status <span class="req">*</span></label>
+          <select class="finput" id="f-status">
+            <option value="Aktif">Aktif</option>
+            <option value="Alumni">Alumni</option>
+            <option value="Mutasi">Mutasi</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label class="flbl">No. HP / WA</label>
+          <input class="finput" id="f-hp" placeholder="+62 ...">
+        </div>
+        <div class="fg">
+          <label class="flbl">Email</label>
+          <input class="finput" type="email" id="f-email" placeholder="siswa@email.com">
+        </div>
+        <div class="fg full">
+          <label class="flbl">Alamat</label>
+          <textarea class="finput" id="f-alamat" rows="2" placeholder="Alamat lengkap siswa"></textarea>
+        </div>
+        <div class="fg">
+          <label class="flbl">Nama Orang Tua/Wali</label>
+          <input class="finput" id="f-ortu" placeholder="Nama ayah/ibu">
+        </div>
+        <div class="fg">
+          <label class="flbl">No. HP Orang Tua</label>
+          <input class="finput" id="f-hp-ortu" placeholder="+62 ...">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeModal()">Batal</button>
+      <button class="btn-save" onclick="saveSiswa()">💾 Simpan Data</button>
+    </div>
+  </div>
+</div>
+
+<!-- Detail Modal -->
+<div class="modal-overlay" id="detail-modal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Detail Siswa</div>
+      <button class="modal-close" onclick="document.getElementById('detail-modal').classList.remove('open')">✕</button>
+    </div>
+    <div class="modal-body" id="detail-body"></div>
+  </div>
+</div>
+
+<!-- Confirm Delete Modal -->
+<div class="modal-overlay" id="confirm-modal">
+  <div class="confirm-modal">
+    <div class="confirm-icon">🗑️</div>
+    <div class="confirm-title">Hapus Data Siswa?</div>
+    <div class="confirm-desc" id="confirm-desc">Data yang dihapus tidak dapat dikembalikan.</div>
+    <div class="confirm-btns">
+      <button class="btn-cancel" onclick="document.getElementById('confirm-modal').classList.remove('open')">Batal</button>
+      <button class="toolbar-btn btn-danger" id="confirm-yes">Ya, Hapus</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast container -->
+<div class="toast-wrap" id="toast-wrap"></div>
+
+<!-- ═══ sql.js CDN ═══ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.js"></script>
+
+<script>
+/* ════════════════════════════════════════════════════
+   DATABASE LAYER — SQLite via sql.js
+   Data disimpan di localStorage sebagai base64
+   ════════════════════════════════════════════════════ */
+
+const DB_KEY = 'smansa_siswa_db';
+let SQL, db;
+let allRows  = [];    // semua data hasil query
+let filtered = [];    // setelah search/filter
+let currentPage = 1;
+let perPage     = 25;
+let sortCol     = 'nama';
+let sortAsc     = true;
+let editId      = null;
+
+/* ── Init sql.js ── */
+async function initDB() {
+  try {
+    SQL = await initSqlJs({
+      locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/${file}`
+    });
+
+    const saved = localStorage.getItem(DB_KEY);
+    if (saved) {
+      const arr = Uint8Array.from(atob(saved), c => c.charCodeAt(0));
+      db = new SQL.Database(arr);
+    } else {
+      db = new SQL.Database();
+    }
+
+    createSchema();
+    seedIfEmpty();
+    saveDB();
+
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('db-dot').classList.add('ready');
+    document.getElementById('db-status-text').textContent = 'SQLite Aktif';
+
+    loadAll();
+  } catch (e) {
+    document.getElementById('db-status-text').textContent = 'Gagal memuat';
+    console.error(e);
+    toast('Gagal memuat sql.js. Pastikan terhubung ke internet.', 'error');
+  }
+}
+
+function createSchema() {
+  db.run(`CREATE TABLE IF NOT EXISTS siswa (
+    id         INTEGER PRIMARY KEY AUTOINCREMENT,
+    nisn       TEXT UNIQUE,
+    nis        TEXT,
+    nama       TEXT NOT NULL,
+    jenis_kelamin TEXT,
+    ttl_kota   TEXT,
+    ttl_tgl    TEXT,
+    kelas      TEXT,
+    jurusan    TEXT,
+    tahun_masuk INTEGER,
+    status     TEXT DEFAULT 'Aktif',
+    hp         TEXT,
+    email      TEXT,
+    alamat     TEXT,
+    nama_ortu  TEXT,
+    hp_ortu    TEXT,
+    created_at TEXT DEFAULT (datetime('now','localtime'))
+  )`);
+}
+
+function saveDB() {
+  const data = db.export();
+  const b64  = btoa(String.fromCharCode(...data));
+  try {
+    localStorage.setItem(DB_KEY, b64);
+  } catch(e) {
+    toast('Peringatan: localStorage penuh, data mungkin tidak tersimpan.', 'error');
+  }
+}
+
+function seedIfEmpty() {
+  const count = db.exec("SELECT COUNT(*) as n FROM siswa")[0]?.values[0][0];
+  if (count > 0) return;
+
+  const seeds = [
+    ['0012345678','2024001','Ahmad Rizki Pratama','L','Bandar Lampung','2008-04-15','XII-1','MIPA',2022,'Aktif','+62 812-0001','rizki@email.com','Jl. Sudirman No.10, BDL','Budi Pratama','+62 811-0001'],
+    ['0023456789','2024002','Siti Nurhaliza','P','Lampung Selatan','2008-07-22','XII-2','MIPA',2022,'Aktif','+62 812-0002','siti@email.com','Jl. Ahmad Yani No.5, BDL','Hasan Nurdin','+62 811-0002'],
+    ['0034567890','2024003','Bagas Dwi Santoso','L','Metro','2008-01-10','XI-3','IPS',2023,'Aktif','+62 812-0003','bagas@email.com','Jl. Kartini No.8, BDL','Dwi Santoso','+62 811-0003'],
+    ['0045678901','2024004','Putri Meliana Sari','P','Bandar Lampung','2008-11-30','XI-1','MIPA',2023,'Aktif','+62 812-0004','putri@email.com','Jl. P. Diponegoro No.3, BDL','Meliana Sari','+62 811-0004'],
+    ['0056789012','2024005','Farhan Aditya Nugraha','L','Bandar Lampung','2007-09-14','XII-4','IPS',2022,'Aktif','+62 812-0005','farhan@email.com','Jl. WR. Supratman No.7, BDL','Aditya Nugraha','+62 811-0005'],
+    ['0067890123','2024006','Dinda Aulia Rahmawati','P','Pringsewu','2009-02-18','X-2','MIPA',2024,'Aktif','+62 812-0006','dinda@email.com','Jl. Ki Hajar Dewantara No.12','Rahmawati','+62 811-0006'],
+    ['0078901234','2024007','Rizky Bima Saputra','L','Tanggamus','2009-05-25','X-3','IPS',2024,'Aktif','+62 812-0007','bima@email.com','Jl. Urip Sumoharjo No.4, BDL','Bima Saputra Sr','+62 811-0007'],
+    ['0089012345','2024008','Anisa Wahyuni','P','Bandar Lampung','2009-08-09','X-1','Bahasa',2024,'Aktif','+62 812-0008','anisa@email.com','Jl. Hayam Wuruk No.6, BDL','Wahyuni','+62 811-0008'],
+    ['0090123456','2023001','Kevin Alvareza','L','Bandar Lampung','2007-12-01','XII-5','Bahasa',2022,'Alumni','+62 812-0009','kevin@email.com','Jl. Gatot Subroto No.9','Alvareza Sr','+62 811-0009'],
+    ['0001234567','2023002','Laila Nur Fazriah','P','Bandar Lampung','2007-03-17','XII-3','MIPA',2022,'Alumni','+62 812-0010','laila@email.com','Jl. Pangeran Antasari No.11','Fazriah','+62 811-0010'],
+  ];
+
+  seeds.forEach(s => {
+    db.run(`INSERT OR IGNORE INTO siswa
+      (nisn,nis,nama,jenis_kelamin,ttl_kota,ttl_tgl,kelas,jurusan,tahun_masuk,status,hp,email,alamat,nama_ortu,hp_ortu)
+      VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`, s);
+  });
+}
+
+/* ════════════════ DATA OPERATIONS ════════════════ */
+
+function loadAll() {
+  const res = db.exec("SELECT * FROM siswa ORDER BY nama ASC");
+  allRows = res.length ? res[0].values.map(row => {
+    const cols = res[0].columns;
+    return Object.fromEntries(cols.map((c,i) => [c, row[i]]));
+  }) : [];
+  updateStats();
+  applyFilter();
+}
+
+function updateStats() {
+  document.getElementById('stat-total').textContent = allRows.length;
+  document.getElementById('stat-aktif').textContent = allRows.filter(r => r.status === 'Aktif').length;
+  document.getElementById('stat-alumni').textContent = allRows.filter(r => r.status === 'Alumni').length;
+  document.getElementById('stat-xii').textContent = allRows.filter(r => r.kelas?.startsWith('XII')).length;
+}
+
+function applyFilter() {
+  const q     = document.getElementById('search-input').value.toLowerCase().trim();
+  const kelas = document.getElementById('filter-kelas').value;
+  const jk    = document.getElementById('filter-jk').value;
+  const status= document.getElementById('filter-status').value;
+
+  filtered = allRows.filter(r => {
+    const matchQ = !q ||
+      r.nama?.toLowerCase().includes(q) ||
+      r.nisn?.includes(q) ||
+      r.kelas?.toLowerCase().includes(q) ||
+      r.nis?.includes(q);
+    const matchK = !kelas  || r.kelas  === kelas;
+    const matchJ = !jk     || r.jenis_kelamin === jk;
+    const matchS = !status || r.status === status;
+    return matchQ && matchK && matchJ && matchS;
+  });
+
+  // Sort
+  filtered.sort((a, b) => {
+    const av = a[sortCol] ?? '';
+    const bv = b[sortCol] ?? '';
+    return sortAsc
+      ? String(av).localeCompare(String(bv), 'id')
+      : String(bv).localeCompare(String(av), 'id');
+  });
+
+  currentPage = 1;
+  renderTable();
+}
+
+let searchTimer;
+function onSearch() {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(applyFilter, 200);
+}
+
+function sortBy(col) {
+  if (sortCol === col) sortAsc = !sortAsc; else { sortCol = col; sortAsc = true; }
+  // update header
+  document.querySelectorAll('.data-table th').forEach(th => th.classList.remove('sorted'));
+  applyFilter();
+}
+
+/* ════════════════ RENDER TABLE ════════════════ */
+
+function renderTable() {
+  const total = filtered.length;
+  const pages = Math.ceil(total / perPage) || 1;
+  if (currentPage > pages) currentPage = pages;
+
+  const start = (currentPage - 1) * perPage;
+  const page  = filtered.slice(start, start + perPage);
+
+  document.getElementById('table-count').textContent = `Menampilkan ${total} siswa`;
+  document.getElementById('pg-info').textContent =
+    total === 0 ? 'Tidak ada data'
+    : `${start+1}–${Math.min(start+perPage, total)} dari ${total} siswa`;
+
+  const tbody = document.getElementById('table-body');
+
+  if (page.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="7">
+      <div class="empty-state">
+        <div class="empty-state-icon">🔍</div>
+        <div class="empty-state-text">Tidak ada siswa yang sesuai pencarian</div>
+      </div></td></tr>`;
+    document.getElementById('pg-btns').innerHTML = '';
+    return;
+  }
+
+  const statusBadge = {
+    Aktif:  'badge-aktif',
+    Alumni: 'badge-alumni',
+    Mutasi: 'badge-mutasi',
+  };
+
+  tbody.innerHTML = page.map(r => `
+    <tr ondblclick="showDetail(${r.id})">
+      <td><span class="td-nisn">${r.nisn || '—'}</span></td>
+      <td><span class="td-nama">${r.nama}</span></td>
+      <td><span class="td-kelas">${r.kelas || '—'}</span></td>
+      <td><span class="badge ${r.jenis_kelamin==='L' ? 'badge-l' : 'badge-p'}">${r.jenis_kelamin || '—'}</span></td>
+      <td>${r.tahun_masuk || '—'}</td>
+      <td><span class="badge ${statusBadge[r.status] || ''}">${r.status}</span></td>
+      <td>
+        <div class="td-actions">
+          <button class="act-btn" title="Detail" onclick="showDetail(${r.id})">👁</button>
+          <button class="act-btn edit" title="Edit" onclick="openEdit(${r.id})">✏️</button>
+          <button class="act-btn delete" title="Hapus" onclick="confirmDelete(${r.id},'${r.nama.replace(/'/g,"\\'")}')">🗑</button>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+
+  renderPagination(pages);
+}
+
+function renderPagination(pages) {
+  const btns = document.getElementById('pg-btns');
+  let h = `<button class="pg-btn" onclick="gotoPage(${currentPage-1})" ${currentPage===1?'disabled':''}>‹</button>`;
+  for (let i = 1; i <= pages; i++) {
+    if (pages > 7 && i > 2 && i < pages - 1 && Math.abs(i - currentPage) > 1) {
+      if (i === 3 || i === pages - 2) h += `<span style="padding:0 4px;color:var(--g400)">…</span>`;
+      continue;
+    }
+    h += `<button class="pg-btn ${i===currentPage?'active':''}" onclick="gotoPage(${i})">${i}</button>`;
+  }
+  h += `<button class="pg-btn" onclick="gotoPage(${currentPage+1})" ${currentPage===pages?'disabled':''}>›</button>`;
+  btns.innerHTML = h;
+}
+
+function gotoPage(p) {
+  const pages = Math.ceil(filtered.length / perPage) || 1;
+  if (p < 1 || p > pages) return;
+  currentPage = p;
+  renderTable();
+}
+
+/* ════════════════ MODAL FORM ════════════════ */
+
+function openModal(id = null) {
+  editId = id;
+  clearForm();
+  document.getElementById('modal-title').textContent = id ? 'Edit Data Siswa' : 'Tambah Siswa Baru';
+
+  if (id) {
+    const res = db.exec(`SELECT * FROM siswa WHERE id = ${id}`);
+    if (!res.length) return;
+    const row = Object.fromEntries(res[0].columns.map((c,i) => [c, res[0].values[0][i]]));
+    document.getElementById('f-nisn').value    = row.nisn || '';
+    document.getElementById('f-nis').value     = row.nis || '';
+    document.getElementById('f-nama').value    = row.nama || '';
+    document.getElementById('f-jk').value      = row.jenis_kelamin || '';
+    document.getElementById('f-ttl-kota').value= row.ttl_kota || '';
+    document.getElementById('f-ttl-tgl').value = row.ttl_tgl || '';
+    document.getElementById('f-kelas').value   = row.kelas || '';
+    document.getElementById('f-jurusan').value = row.jurusan || '';
+    document.getElementById('f-masuk').value   = row.tahun_masuk || '';
+    document.getElementById('f-status').value  = row.status || 'Aktif';
+    document.getElementById('f-hp').value      = row.hp || '';
+    document.getElementById('f-email').value   = row.email || '';
+    document.getElementById('f-alamat').value  = row.alamat || '';
+    document.getElementById('f-ortu').value    = row.nama_ortu || '';
+    document.getElementById('f-hp-ortu').value = row.hp_ortu || '';
+  }
+
+  document.getElementById('form-modal').classList.add('open');
+}
+
+function openEdit(id) { openModal(id); }
+
+function closeModal() {
+  document.getElementById('form-modal').classList.remove('open');
+  clearForm();
+  editId = null;
+}
+
+function clearForm() {
+  ['f-nisn','f-nis','f-nama','f-ttl-kota','f-ttl-tgl','f-hp','f-email','f-alamat','f-ortu','f-hp-ortu','f-masuk']
+    .forEach(id => document.getElementById(id).value = '');
+  ['f-jk','f-kelas','f-jurusan'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('f-status').value = 'Aktif';
+  ['e-nisn','e-nama','e-jk','e-kelas','e-masuk'].forEach(id => document.getElementById(id).textContent = '');
+  ['f-nisn','f-nama','f-jk','f-kelas','f-masuk'].forEach(id => document.getElementById(id).classList.remove('err'));
+}
+
+function saveSiswa() {
+  // Validate
+  let valid = true;
+  const val = id => document.getElementById(id).value.trim();
+  const err = (id, msg) => {
+    document.getElementById('e-'+id).textContent = msg;
+    document.getElementById('f-'+id).classList.add('err');
+    valid = false;
+  };
+  const ok = id => {
+    document.getElementById('e-'+id).textContent = '';
+    document.getElementById('f-'+id).classList.remove('err');
+  };
+
+  if (!val('nisn') || !/^\d{10}$/.test(val('nisn'))) err('nisn', 'NISN harus 10 digit angka'); else ok('nisn');
+  if (!val('nama')) err('nama', 'Nama tidak boleh kosong'); else ok('nama');
+  if (!val('jk'))   err('jk',   'Pilih jenis kelamin'); else ok('jk');
+  if (!val('kelas')) err('kelas','Pilih kelas'); else ok('kelas');
+  if (!val('masuk') || isNaN(val('masuk'))) err('masuk','Tahun masuk tidak valid'); else ok('masuk');
+
+  if (!valid) return;
+
+  try {
+    if (editId) {
+      db.run(`UPDATE siswa SET
+        nisn=?,nis=?,nama=?,jenis_kelamin=?,ttl_kota=?,ttl_tgl=?,
+        kelas=?,jurusan=?,tahun_masuk=?,status=?,hp=?,email=?,
+        alamat=?,nama_ortu=?,hp_ortu=?
+        WHERE id=?`,
+        [val('nisn'),val('nis'),val('nama'),val('jk'),val('ttl-kota'),val('ttl-tgl'),
+         val('kelas'),val('jurusan'),val('masuk'),val('status'),val('hp'),val('email'),
+         val('alamat'),val('ortu'),val('hp-ortu'), editId]);
+      toast('Data siswa berhasil diperbarui ✓', 'success');
+    } else {
+      db.run(`INSERT INTO siswa
+        (nisn,nis,nama,jenis_kelamin,ttl_kota,ttl_tgl,kelas,jurusan,tahun_masuk,status,hp,email,alamat,nama_ortu,hp_ortu)
+        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+        [val('nisn'),val('nis'),val('nama'),val('jk'),val('ttl-kota'),val('ttl-tgl'),
+         val('kelas'),val('jurusan'),val('masuk'),val('status'),val('hp'),val('email'),
+         val('alamat'),val('ortu'),val('hp-ortu')]);
+      toast('Siswa baru berhasil ditambahkan ✓', 'success');
+    }
+    saveDB();
+    closeModal();
+    loadAll();
+  } catch(e) {
+    if (e.message.includes('UNIQUE')) {
+      document.getElementById('e-nisn').textContent = 'NISN sudah terdaftar';
+      document.getElementById('f-nisn').classList.add('err');
+    } else {
+      toast('Gagal menyimpan: ' + e.message, 'error');
+    }
+  }
+}
+
+/* ════════════════ DETAIL VIEW ════════════════ */
+
+function showDetail(id) {
+  const res = db.exec(`SELECT * FROM siswa WHERE id = ${id}`);
+  if (!res.length) return;
+  const row = Object.fromEntries(res[0].columns.map((c,i) => [c, res[0].values[0][i]]));
+
+  const statusBadge = { Aktif:'badge-aktif', Alumni:'badge-alumni', Mutasi:'badge-mutasi' };
+
+  document.getElementById('detail-body').innerHTML = `
+    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;padding:1rem;background:var(--g50);border-radius:10px;">
+      <div style="width:52px;height:52px;border-radius:50%;background:var(--maroon-dk);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;">${row.jenis_kelamin==='L'?'👦':'👧'}</div>
+      <div>
+        <div style="font-family:var(--font-h);font-size:1.2rem;font-weight:700;color:var(--maroon-dk);">${row.nama}</div>
+        <div style="font-family:var(--font-m);font-size:0.72rem;color:var(--g400);">${row.nisn || 'NISN —'} · ${row.kelas || '—'} · <span class="badge ${statusBadge[row.status]||''}">${row.status}</span></div>
+      </div>
+    </div>
+    <div class="detail-grid">
+      <div class="detail-item"><div class="detail-lbl">NIS</div><div class="detail-val">${row.nis || '—'}</div></div>
+      <div class="detail-item"><div class="detail-lbl">Jurusan</div><div class="detail-val">${row.jurusan || '—'}</div></div>
+      <div class="detail-item"><div class="detail-lbl">Jenis Kelamin</div><div class="detail-val">${row.jenis_kelamin==='L'?'Laki-laki':'Perempuan'}</div></div>
+      <div class="detail-item"><div class="detail-lbl">Tahun Masuk</div><div class="detail-val">${row.tahun_masuk || '—'}</div></div>
+      <div class="detail-item full"><div class="detail-lbl">Tempat, Tanggal Lahir</div><div class="detail-val">${row.ttl_kota||'—'}, ${row.ttl_tgl||'—'}</div></div>
+      <div class="detail-item"><div class="detail-lbl">No. HP/WA</div><div class="detail-val">${row.hp || '—'}</div></div>
+      <div class="detail-item"><div class="detail-lbl">Email</div><div class="detail-val">${row.email || '—'}</div></div>
+      <div class="detail-item full"><div class="detail-lbl">Alamat</div><div class="detail-val">${row.alamat || '—'}</div></div>
+      <div class="detail-item"><div class="detail-lbl">Orang Tua/Wali</div><div class="detail-val">${row.nama_ortu || '—'}</div></div>
+      <div class="detail-item"><div class="detail-lbl">HP Orang Tua</div><div class="detail-val">${row.hp_ortu || '—'}</div></div>
+      <div class="detail-item full"><div class="detail-lbl">Ditambahkan</div><div class="detail-val" style="font-family:var(--font-m);font-size:0.8rem;">${row.created_at || '—'}</div></div>
+    </div>
+    <div style="display:flex;gap:0.5rem;margin-top:1.25rem;">
+      <button class="toolbar-btn btn-primary" style="flex:1;" onclick="document.getElementById('detail-modal').classList.remove('open');openEdit(${row.id})">✏️ Edit Data</button>
+      <button class="toolbar-btn btn-danger" onclick="document.getElementById('detail-modal').classList.remove('open');confirmDelete(${row.id},'${row.nama.replace(/'/g,"\\'")}')">🗑 Hapus</button>
+    </div>
+  `;
+  document.getElementById('detail-modal').classList.add('open');
+}
+
+/* ════════════════ DELETE ════════════════ */
+
+function confirmDelete(id, nama) {
+  document.getElementById('confirm-desc').textContent = `Hapus data "${nama}"? Tindakan ini tidak dapat dibatalkan.`;
+  document.getElementById('confirm-yes').onclick = () => {
+    db.run(`DELETE FROM siswa WHERE id = ?`, [id]);
+    saveDB();
+    loadAll();
+    document.getElementById('confirm-modal').classList.remove('open');
+    toast(`Data "${nama}" berhasil dihapus`, 'success');
+  };
+  document.getElementById('confirm-modal').classList.add('open');
+}
+
+/* ════════════════ EXPORT CSV ════════════════ */
+
+function exportCSV() {
+  const res = db.exec("SELECT nisn,nis,nama,jenis_kelamin,ttl_kota,ttl_tgl,kelas,jurusan,tahun_masuk,status,hp,email,alamat,nama_ortu,hp_ortu FROM siswa ORDER BY nama");
+  if (!res.length) { toast('Tidak ada data untuk diekspor', 'error'); return; }
+
+  const header = ['NISN','NIS','Nama','JK','Kota Lahir','Tgl Lahir','Kelas','Jurusan','Tahun Masuk','Status','HP','Email','Alamat','Nama Ortu','HP Ortu'];
+  const rows   = res[0].values.map(r => r.map(v => `"${String(v||'').replace(/"/g,'""')}"`).join(','));
+  const csv    = [header.join(','), ...rows].join('\n');
+
+  const blob = new Blob(['\uFEFF'+csv], { type: 'text/csv;charset=utf-8;' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href = url; a.download = `siswa_smansa_${new Date().toISOString().slice(0,10)}.csv`;
+  a.click(); URL.revokeObjectURL(url);
+  toast(`Berhasil mengekspor ${res[0].values.length} data siswa`, 'success');
+}
+
+/* ════════════════ IMPORT CSV ════════════════ */
+
+function importCSV(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const lines = e.target.result.split('\n').filter(l => l.trim());
+    if (lines.length < 2) { toast('File CSV kosong atau tidak valid', 'error'); return; }
+
+    let added = 0, skipped = 0;
+    for (let i = 1; i < lines.length; i++) {
+      const cols = lines[i].split(',').map(c => c.replace(/^"|"$/g,'').trim());
+      if (cols.length < 3 || !cols[2]) { skipped++; continue; }
+      try {
+        db.run(`INSERT OR IGNORE INTO siswa
+          (nisn,nis,nama,jenis_kelamin,ttl_kota,ttl_tgl,kelas,jurusan,tahun_masuk,status,hp,email,alamat,nama_ortu,hp_ortu)
+          VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+          [cols[0]||null,cols[1]||null,cols[2],cols[3]||null,cols[4]||null,cols[5]||null,
+           cols[6]||null,cols[7]||null,cols[8]||null,cols[9]||'Aktif',
+           cols[10]||null,cols[11]||null,cols[12]||null,cols[13]||null,cols[14]||null]);
+        added++;
+      } catch { skipped++; }
+    }
+    saveDB();
+    loadAll();
+    toast(`Import selesai: ${added} ditambahkan, ${skipped} dilewati`, 'success');
+    input.value = '';
+  };
+  reader.readAsText(file, 'UTF-8');
+}
+
+/* ════════════════ TOAST ════════════════ */
+
+function toast(msg, type = '') {
+  const wrap = document.getElementById('toast-wrap');
+  const el   = document.createElement('div');
+  el.className = `toast ${type}`;
+  el.innerHTML = `<span class="toast-icon">${type==='success'?'✓':type==='error'?'✕':'ℹ'}</span> ${msg}`;
+  wrap.appendChild(el);
+  requestAnimationFrame(() => { requestAnimationFrame(() => el.classList.add('show')); });
+  setTimeout(() => {
+    el.classList.remove('show');
+    setTimeout(() => el.remove(), 400);
+  }, 3500);
+}
+
+/* ════════════════ KEYBOARD SHORTCUTS ════════════════ */
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+  }
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    e.preventDefault();
+    document.getElementById('search-input').focus();
+  }
+});
+
+/* ── Start ── */
+initDB();
+</script>
+</body>
+</html>
